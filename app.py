@@ -2,11 +2,20 @@
 HONEST STYLIST
 A brutally honest fashion advisor
 
-USER FLOW:
+STRATEGY:
+- Most fashion tech optimizes for selling more clothes
+- Honest Stylist optimizes for helping users avoid bad purchases
+- Reduce returns through honest, anatomy-aware feedback before checkout
+
+HYPOTHESIS:
+- If users receive honest, anatomy-aware styling feedback before purchase,
+  they will trust the platform more and make better decisions
+
+FLOW:
 1. Upload photo (face + shoulders)
-2. Select garment
+2. Select or upload garment
 3. Click "Be Honest"
-4. Get verdict + explanation + pivot
+4. Get verdict + explanation + actionable pivot
 """
 
 import streamlit as st
@@ -64,6 +73,13 @@ st.markdown("""
 # Title
 st.title("👔 Honest Stylist")
 st.subheader("Get brutally honest styling advice in seconds")
+st.markdown("""
+**Most fashion tech optimizes for selling more clothes.**  
+**We optimize for helping you avoid bad purchases.**
+
+Get anatomy-aware feedback on whether a piece actually suits you—before checkout.
+""")
+st.divider()
 
 # Sidebar for uploads/selections
 with st.sidebar:

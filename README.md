@@ -2,11 +2,22 @@
 
 A brutally honest fashion advisor that analyzes your photo and tells you whether a garment actually suits you—no sugar-coating.
 
+## Problem Statement
+
+**Most fashion tech optimizes for selling more clothes.**
+**Honest Stylist optimizes for helping users avoid bad purchases.**
+
+Users spend $160B annually on clothing returns. Fashion AI typically maximizes add-to-cart, not user confidence. We flip this: by giving brutally honest styling feedback before checkout, users make better decisions, trust the platform, and avoid returns.
+
+## Product Hypothesis
+
+*If users receive honest, anatomy-aware styling feedback before checkout, they will trust the platform more and make better purchase decisions.*
+
 ## How It Works
 
 1. **Upload your photo** (face + upper body)
 2. **Select or upload a garment** (from catalog or custom image)
-3. **Get honest feedback** about suitability
+3. **Get honest feedback** about suitability based on your unique anatomy
 
 The app analyzes:
 - Your skin tone & undertone
@@ -27,6 +38,24 @@ The app analyzes:
 - **OpenCV** — Image processing
 - **scikit-learn** — Color analysis (k-means clustering)
 - **Google Gemini API** (optional) — Human-friendly explanations
+
+## Success Metrics
+
+*How we measure if the hypothesis is working:*
+
+- **Reduced Returns** — Users who use Honest Stylist return items 20% less frequently
+- **Increased Confidence** — 80%+ of users feel confident in their purchase decisions
+- **Higher Trust Score** — Platform trust ratings increase by adopting honest feedback
+
+## Product Roadmap
+
+*5 strategic epics to scale this concept:*
+
+1. **Auto Garment Attribute Detection** — Use computer vision to extract fit, silhouette, and color automatically (no manual tagging)
+2. **Feedback-Driven Rule Tuning** — Ingest user returns/satisfaction data to continuously refine scoring rules
+3. **Retail Checkout Integration** — Embed honest stylist in retail partner checkout flows
+4. **Personal Stylist Memory** — Build user profiles that remember preferences and improve recommendations
+5. **Accessibility & Inclusivity Expansion** — Support all body shapes, skin tones, and accessibility needs at scale
 
 ## Quick Start
 
@@ -137,6 +166,68 @@ python test_polish.py          # Verdict language
 - **Human language** — No jargon, speaks like a stylist
 - **Fallback-safe** — Works even if APIs fail
 - **Honest, not mean** — Direct about what doesn't work, supportive with solutions
+
+## Data & AI Philosophy
+
+**Vision Models Extract Signals Only**
+- OpenCV + k-means detect skin tone, body shape, color properties
+- No decision-making happens here—just feature extraction
+
+**Rules Make Decisions**
+- Deterministic scoring logic applies human-authored rules
+- 100 points minus penalties for rule violations
+- Explainable: every point deducted has a documented reason
+
+**LLMs Explain Decisions**
+- Gemini generates natural language explanations
+- Never changes verdict (prompt explicitly forbids this)
+- Optional feature—app works without API key
+
+### Data Flywheel Potential
+
+As the platform scales, we can:
+1. **User feedback** → Collect returns, satisfaction ratings, try-on behavior
+2. **Infer rule effectiveness** → Which penalties are most predictive of returns?
+3. **Tune rules dynamically** → Adjust penalties based on real-world data
+4. **Improve predictions** → Better accuracy without retraining any models
+
+## Engineering Signals
+
+**Deterministic & Explainable**
+- All scoring logic is rule-based, reproducible, and auditable
+- No black-box models; every verdict includes reasoning
+
+**Graceful Degradation**
+- Gemini API optional; app uses rule-based explanations as fallback
+- Image analysis failures handled with sensible defaults
+- No crashes on edge cases
+
+**Clean UI / No Debug Noise**
+- All technical warnings and debug banners suppressed
+- Only intentional, polished UI shown to users
+
+**Scalability Considerations**
+- Rule logic is modular; new rules added without code refactor
+- Vision pipeline is lightweight (no heavy ML models)
+- Data-driven approach; no model retraining required to scale
+- Garment attributes stored in simple data structures (no database required for MVP)
+
+## Accessibility
+
+**Standards Compliance**
+- ✅ Color contrast meets WCAG AA standards
+- ✅ All buttons and inputs are keyboard-navigable
+- ✅ Streamlit components use semantic HTML
+
+**Current Coverage**
+- All UI elements have clear labels
+- Verdict boxes use color + text (not color alone)
+- No interactions require mouse-only navigation
+
+**Future Roadmap**
+- Screen reader testing and optimization
+- Support for all skin tones and body shapes at equal accuracy
+- Multilingual support for global accessibility
 
 ## Garment Catalog
 
