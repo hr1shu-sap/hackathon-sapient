@@ -6,7 +6,7 @@ GARMENTS = [
         "sku": "tee_001",
         "name": "Crisp White T-Shirt",
         "color_name": "white",
-        "color_season": ["Cool Winter", "Light Spring"],
+        "color_season": ["Cool Winter", "Deep Winter"],
         "silhouette": "fitted",
         "shoulder_emphasis": "low",
         "visual_weight": "light",
@@ -18,7 +18,7 @@ GARMENTS = [
         "sku": "tee_002",
         "name": "Camel Oversized Sweater",
         "color_name": "camel",
-        "color_season": ["Soft Autumn", "Light Spring"],
+        "color_season": ["Deep Autumn", "Soft Autumn"],
         "silhouette": "oversized",
         "shoulder_emphasis": "low",
         "visual_weight": "heavy",
@@ -42,7 +42,7 @@ GARMENTS = [
         "sku": "tee_004",
         "name": "Coral Crop Top",
         "color_name": "coral",
-        "color_season": ["Light Spring", "Soft Autumn"],
+        "color_season": [ "True Spring", "Bright Spring"],
         "silhouette": "fitted",
         "shoulder_emphasis": "high",
         "visual_weight": "light",
@@ -54,7 +54,7 @@ GARMENTS = [
         "sku": "tee_005",
         "name": "Navy Striped Shirt",
         "color_name": "navy",
-        "color_season": ["Cool Winter", "Deep Winter"],
+        "color_season": [ "Deep Winter", "Deep Autumn"],
         "silhouette": "straight",
         "shoulder_emphasis": "medium",
         "visual_weight": "medium",
@@ -66,7 +66,7 @@ GARMENTS = [
         "sku": "tee_006",
         "name": "Olive Green Linen",
         "color_name": "olive",
-        "color_season": ["Soft Autumn"],
+        "color_season": ["Soft Autumn", "Light Spring"],
         "silhouette": "oversized",
         "shoulder_emphasis": "low",
         "visual_weight": "light",
@@ -90,7 +90,7 @@ GARMENTS = [
         "sku": "tee_008",
         "name": "Neon Yellow Tank",
         "color_name": "neon yellow",
-        "color_season": ["Light Spring"],
+        "color_season": ["True Spring", "Bright Spring"],
         "silhouette": "fitted",
         "shoulder_emphasis": "high",
         "visual_weight": "light",
@@ -102,7 +102,7 @@ GARMENTS = [
         "sku": "tee_009",
         "name": "Burgundy Sweater",
         "color_name": "burgundy",
-        "color_season": ["Deep Winter", "Soft Autumn"],
+        "color_season": ["Deep Winter", "Deep Autumn"],
         "silhouette": "fitted",
         "shoulder_emphasis": "low",
         "visual_weight": "heavy",
@@ -138,7 +138,7 @@ GARMENTS = [
         "sku": "tee_012",
         "name": "Cobalt Blue Blazer",
         "color_name": "cobalt",
-        "color_season": ["Cool Winter"],
+        "color_season": ["Cool Winter", "Deep Winter"],
         "silhouette": "fitted",
         "shoulder_emphasis": "high",
         "visual_weight": "heavy",
@@ -162,7 +162,7 @@ GARMENTS = [
         "sku": "tee_014",
         "name": "Deep Plum Tunic",
         "color_name": "plum",
-        "color_season": ["Deep Winter"],
+        "color_season": ["Deep Winter", "Deep Autumn"],
         "silhouette": "oversized",
         "shoulder_emphasis": "low",
         "visual_weight": "medium",
@@ -210,7 +210,7 @@ GARMENTS = [
         "sku": "tee_018",
         "name": "Blush Pink Cardigan",
         "color_name": "blush",
-        "color_season": ["Light Spring"],
+        "color_season": ["Soft Summer", "Light Spring"],
         "silhouette": "oversized",
         "shoulder_emphasis": "low",
         "visual_weight": "light",
@@ -222,7 +222,7 @@ GARMENTS = [
         "sku": "tee_019",
         "name": "Charcoal Mock Neck",
         "color_name": "charcoal",
-        "color_season": ["Cool Winter"],
+        "color_season": ["Cool Winter", "Deep Winter"],
         "silhouette": "fitted",
         "shoulder_emphasis": "medium",
         "visual_weight": "heavy",
@@ -234,7 +234,7 @@ GARMENTS = [
         "sku": "tee_020",
         "name": "Rose Gold Satin Cami",
         "color_name": "rose gold",
-        "color_season": ["Cool Winter", "Deep Winter"],
+        "color_season": ["Soft Autumn", "Light Spring"],
         "silhouette": "fitted",
         "shoulder_emphasis": "low",
         "visual_weight": "light",
@@ -255,6 +255,10 @@ def list_garment_skus():
     """Return list of all available SKUs"""
     return [g["sku"] for g in GARMENTS]
 
-def list_garments_display():
+def get_full_catalog():
+    """Return the full list of garments"""
+    return GARMENTS
+
+def get_full_catalog_display():
     """Return list of (SKU, name) tuples for UI display"""
     return [(g["sku"], g["name"]) for g in GARMENTS]
