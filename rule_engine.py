@@ -56,5 +56,14 @@ class StylingAnalyzer:
         return self._format_result()
 
     def _format_result(self):
-        # (Same formatting logic as before)
-        return {"score": max(0, self.score), "reasons": self.reasons, "verdict": self._get_verdict()}
+        # Cap score at 95 to avoid overclaiming perfect certainty
+        final_score = max(0, min(95, int(round(self.score))))
+        return {"score": final_score, "reasons": self.reasons, "verdict": self._get_verdict(final_score)}
+
+    def _get_verdict(self, score: int) -> str:
+        """Return a human-friendly verdict string based on the final score."""
+        if score >= 60:
+            return "This actually suits you — it's a good match for your proportions and coloring."
+        if score >= 40:
+            return "You could wear this, but it won't flatter you as much as other options."
+        return "This almost works — but it fails in one key area; consider alternatives."

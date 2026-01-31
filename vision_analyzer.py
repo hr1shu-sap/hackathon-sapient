@@ -93,9 +93,17 @@ class VisionAnalyzer:
         if not self.pose_enabled:
             return {"shape": "Rectangle", "ratios": {}, "confidence": 0.0}
 
+        # MediaPipe prefers a square IMAGE_DIMENSIONS when using NORM_RECT.
+        # Crop to a centered square to avoid the "Using NORM_RECT without IMAGE_DIMENSIONS" warning
+        h_img, w_img = img.shape[:2]
+        min_dim = min(h_img, w_img)
+        y0 = (h_img - min_dim) // 2
+        x0 = (w_img - min_dim) // 2
+        square = img[y0:y0 + min_dim, x0:x0 + min_dim]
+
         mp_image = mp.Image(
             image_format=mp.ImageFormat.SRGB,
-            data=cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+            data=cv2.cvtColor(square, cv2.COLOR_BGR2RGB)
         )
 
         result = self.pose_landmarker.detect(mp_image)
