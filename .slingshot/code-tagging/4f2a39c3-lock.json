@@ -1,0 +1,24 @@
+{
+  "honest_stylist\\.env.example": {
+    "filename": ".env.example",
+    "path": "honest_stylist\\.env.example",
+    "version": "1.1",
+    "chunks": {
+      "eebf41": {
+        "user": "Ayusha Nayak",
+        "model": "claude-sonnet-4@20250514",
+        "timestamp": 1769862710,
+        "platform": "VisualStudioCode",
+        "product": "AIPP",
+        "productVersion": "2.1.2",
+        "source": "chat",
+        "type": "pasteCode",
+        "hash": "13729198",
+        "messageId": "system_fccec5b0-fe9f-11f0-8c9d-cba2a7a00901",
+        "codeBlockId": "system_fccec5b0-fe9f-11f0-8c9d-cba2a7a00901-Codeblock-4",
+        "isActive": false
+      }
+    },
+    "lines": {}
+  }
+}
