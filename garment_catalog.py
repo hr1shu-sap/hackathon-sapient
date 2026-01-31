@@ -78,7 +78,7 @@ GARMENTS = [
         "sku": "tee_007",
         "name": "Dusty Rose Blouse",
         "color_name": "dusty rose",
-        "color_season": ["Cool Winter", "Light Spring"],
+        "color_season": ["Soft Summer", "True Summer", "Light Summer"],
         "silhouette": "fitted",
         "shoulder_emphasis": "medium",
         "visual_weight": "light",

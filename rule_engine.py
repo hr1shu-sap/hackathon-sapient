@@ -1,24 +1,41 @@
+# rule_engine.py
+
 class StylingAnalyzer:
     """
-    Rule-based styling verdict engine.
-    Uses body balance signals instead of rigid body shapes.
+    Rule-based styling engine using BODY BALANCE → SIGNALS.
+    This engine produces structured, explainable reasons
+    that can later be expanded by an LLM.
     """
 
     def __init__(self):
         self.score = 100
         self.reasons = []
 
+    # --------------------------------------------------
+    # INTERNAL HELPERS
+    # --------------------------------------------------
+
     def reset(self):
         self.score = 100
         self.reasons = []
 
-    def add_reason(self, penalty, text):
+    def add_reason(self, penalty: int, code: str, text: str):
         self.score -= penalty
-        self.reasons.append({"text": text, "penalty": penalty})
+        self.reasons.append({
+            "type": "penalty",
+            "code": code,
+            "text": text,
+            "impact": penalty
+        })
 
-    def add_bonus(self, bonus, text):
+    def add_bonus(self, bonus: int, code: str, text: str):
         self.score += bonus
-        self.reasons.append({"text": text, "penalty": -bonus})
+        self.reasons.append({
+            "type": "bonus",
+            "code": code,
+            "text": text,
+            "impact": -bonus
+        })
 
     # --------------------------------------------------
     # MAIN ANALYSIS
@@ -27,101 +44,117 @@ class StylingAnalyzer:
     def analyze(self, user_profile: dict, garment: dict) -> dict:
         self.reset()
 
-        # ---- User signals ----
-        body = user_profile.get("body_profile", {})
-        signals = body.get("signals", {})
-        body_conf = body.get("confidence", 0.0)
+        # ----------------------------------------------
+        # BODY BALANCE SIGNALS
+        # ----------------------------------------------
+        body = user_profile.get("body_balance", {})
+        confidence = body.get("confidence", 0.0)
 
-        shoulder_dom = signals.get("shoulder_dominant", False)
-        hip_dom = signals.get("hip_dominant", False)
-        defined_waist = signals.get("defined_waist", False)
+        shoulder_bias = body.get("shoulder_bias", 0.0)      # +ve = shoulder dominant
+        hip_bias = body.get("hip_bias", 0.0)                # +ve = hip dominant
+        waist_def = body.get("waist_definition", 0.0)       # higher = more defined
 
-        # ---- Garment attributes ----
-        silhouette = garment.get("silhouette")              # fitted, a-line, oversized
+        shoulder_dominant = shoulder_bias > 0.10
+        hip_dominant = hip_bias > 0.10
+        defined_waist = waist_def > 0.15
+
+        # ----------------------------------------------
+        # GARMENT ATTRIBUTES
+        # ----------------------------------------------
+        silhouette = garment.get("silhouette")              # fitted, straight, oversized
         shoulder_emph = garment.get("shoulder_emphasis")    # low, medium, high
-        neckline = garment.get("neckline")                  # v-neck, crew, off-shoulder
-        waist_def = garment.get("waist_definition")         # low, medium, high
+        neckline = garment.get("neckline")                  # v-neck, crew, boat, etc.
         visual_weight = garment.get("visual_weight")        # light, medium, heavy
 
-        # --------------------------------------------------
-        # BODY × GARMENT INTERACTION (confidence-gated)
-        # --------------------------------------------------
+        # ----------------------------------------------
+        # BODY × GARMENT INTERACTION
+        # ----------------------------------------------
+        if confidence >= 0.6:
 
-        if body_conf >= 0.6:
-
-            # ---- Shoulder dominance handling ----
-            if shoulder_dom:
+            # ---- Shoulder dominance ----
+            if shoulder_dominant:
                 if shoulder_emph == "high":
                     self.add_reason(
-                        20,
-                        "Strong shoulder details add bulk to an already upper-heavy silhouette."
+                        25,
+                        "SHOULDER_OVERLOAD",
+                        "Strong shoulder detailing adds visual bulk to an already upper-dominant frame."
                     )
-                if neckline == "v-neck":
+                if neckline in ["v-neck", "deep_v"]:
                     self.add_bonus(
                         10,
-                        "V-neckline helps visually narrow the shoulder line."
+                        "SHOULDER_SOFTENING",
+                        "V-necklines visually narrow the shoulder line and restore balance."
                     )
 
-            # ---- Hip dominance handling ----
-            if hip_dom:
+            # ---- Hip dominance ----
+            if hip_dominant:
                 if silhouette == "fitted":
                     self.add_reason(
-                        15,
-                        "Fitted cuts can over-emphasize the lower half."
+                        20,
+                        "HIP_OVEREMPHASIS",
+                        "A fitted silhouette can over-emphasize the lower half."
                     )
                 if shoulder_emph == "high":
                     self.add_bonus(
                         15,
-                        "Shoulder structure helps rebalance the silhouette."
+                        "UPPER_BALANCE",
+                        "Added shoulder structure helps counterbalance hip dominance."
                     )
 
-            # ---- Waist definition logic ----
+            # ---- Waist definition ----
             if defined_waist:
-                if waist_def == "high":
+                if silhouette == "fitted":
                     self.add_bonus(
                         15,
-                        "Defined waist works well with your natural proportions."
+                        "WAIST_HIGHLIGHT",
+                        "This cut complements your natural waist definition."
                     )
-                elif waist_def == "low":
+                elif silhouette == "oversized":
                     self.add_reason(
                         10,
-                        "Lack of waist definition hides one of your strongest balance points."
+                        "WAIST_HIDDEN",
+                        "Loose silhouettes hide one of your strongest proportion cues."
                     )
 
             # ---- Visual weight ----
             if visual_weight == "heavy" and not defined_waist:
                 self.add_reason(
                     10,
+                    "WEIGHT_OVERWHELM",
                     "Heavy fabrics without shaping can overwhelm your frame."
                 )
 
         else:
-            # Low confidence → soften body-based penalties
+            # Low confidence → conservative styling
             self.add_reason(
                 5,
-                "Body analysis confidence is limited; recommendations are conservative."
+                "LOW_BODY_CONFIDENCE",
+                "Body balance signals are weak; recommendations are intentionally conservative."
             )
 
-        # --------------------------------------------------
-        # COLOR HARMONY (high confidence rule)
-        # --------------------------------------------------
-
+        # ----------------------------------------------
+        # COLOR HARMONY (HIGH CONFIDENCE RULE)
+        # ----------------------------------------------
         user_season = user_profile.get("season")
-        if user_season not in garment.get("color_season", []):
+        garment_seasons = garment.get("color_season", [])
+
+        if user_season and user_season not in garment_seasons:
             self.add_reason(
                 40,
+                "COLOR_MISMATCH",
                 f"This color falls outside your {user_season} palette."
             )
 
-        # --------------------------------------------------
+        # ----------------------------------------------
         # FINAL VERDICT
-        # --------------------------------------------------
-
+        # ----------------------------------------------
         return self._format_result()
 
     # --------------------------------------------------
+    # OUTPUT FORMAT
+    # --------------------------------------------------
 
-    def _format_result(self):
+    def _format_result(self) -> dict:
         if self.score >= 75:
             verdict = "Works very well"
             verdict_short = "✓ STRONG MATCH"
