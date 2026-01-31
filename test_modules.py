@@ -1,6 +1,9 @@
 """Quick test script to validate all modules"""
 
 import sys
+from rule_engine import StylingAnalyzer
+from dotenv import load_dotenv
+import os
 sys.path.insert(0, r"c:\Users\riskumar23\Downloads\Honest Stylist")
 
 print("=" * 60)
@@ -18,11 +21,9 @@ print(f"  - Garment details: {sample['name']}, seasons: {sample['color_season']}
 
 # Test 2: Rule Engine
 print("\n✓ Testing Rule Engine...")
-from rule_engine import StylingAnalyzer
 analyzer = StylingAnalyzer()
 user_profile = {
     "skin_season": "Cool Winter",
-    "body_shape": "Inverted Triangle",
     "skin_undertone": "cool",
     "contrast_level": "high"
 }
@@ -39,12 +40,10 @@ vision = VisionAnalyzer()
 print(f"  - VisionAnalyzer initialized")
 print(f"  - Face detector: OK")
 print(f"  - Pose detector: OK")
-print(f"  - Methods: extract_skin_tone, analyze_body_shape, calculate_contrast")
+print(f"  - Methods: analyze_photo, _detect_face, _extract_skin, _extract_hair, _extract_eye_color, _classify_contrast")
 
 # Test 4: Gemini Explainer (check if API key exists)
 print("\n✓ Testing Gemini Explainer...")
-import os
-from dotenv import load_dotenv
 load_dotenv()
 api_key = os.getenv("GOOGLE_API_KEY")
 if api_key:

@@ -1,32 +1,6 @@
-# 👔 Honest Stylist
+# Honest Stylist - MVP
 
-A brutally honest fashion advisor that analyzes your photo and tells you whether a garment actually suits you—no sugar-coating.
-
-## How It Works
-
-1. **Upload your photo** (face + upper body)
-2. **Select or upload a garment** (from catalog or custom image)
-3. **Get honest feedback** about suitability
-
-The app analyzes:
-- Your skin tone & undertone
-- Your body shape & proportions
-- Color harmony & contrast
-- Silhouette balance
-
-## Verdict Scale
-
-- **✅ 80%+** — "This actually suits you — here's why it doesn't fail."
-- **⚠️ 50-79%** — "You could wear this, but it won't flatter you."
-- **❌ <50%** — "This almost works — but it fails in one key area."
-
-## Tech Stack
-
-- **Python 3.14**
-- **Streamlit** — Web UI
-- **OpenCV** — Image processing
-- **scikit-learn** — Color analysis (k-means clustering)
-- **Google Gemini API** (optional) — Human-friendly explanations
+A brutally honest fashion advisor powered by vision AI + styling rules + LLM explanations.
 
 ## Quick Start
 
@@ -36,13 +10,16 @@ The app analyzes:
 pip install -r requirements.txt
 ```
 
-### 2. Set Up API Key (Optional)
+### 2. Set Up API Key
 
 Get your Gemini API key from [Google AI Studio](https://aistudio.google.com/app/apikey)
 
 ```bash
+# Copy .env.example to .env
 cp .env.example .env
-# Edit .env and add your GOOGLE_API_KEY
+
+# Edit .env and paste your key
+# GOOGLE_API_KEY=abc123...
 ```
 
 ### 3. Run the App
@@ -53,103 +30,171 @@ streamlit run app.py
 
 Open http://localhost:8501 in your browser.
 
+## How It Works
+
+### User Flow
+
+1. Upload a photo (face + shoulders visible)
+2. Select a garment from the catalog
+3. Click "Be Honest"
+4. Get verdict + explanation + pivot suggestion
+
+### Architecture
+
+```
+Photo Upload
+    ↓
+Vision Analysis (MediaPipe)
+    ├─ Face detection → Skin tone extraction
+    ├─ Pose detection → (optional pose features)
+    └─ Contrast calculation
+    ↓
+Rule Engine
+    ├─ Color season matching
+    ├─ Silhouette rules
+    ├─ Visual weight rules
+    └─ Generate penalties/bonuses
+    ↓
+Gemini LLM (optional)
+    ├─ Explain verdict
+    ├─ Suggest pivot
+    └─ Generate honest reasons
+    ↓
+User-Friendly Output
+    ├─ Verdict (Works/Risky/Don't Buy)
+    ├─ Why (rules applied)
+    └─ Pivot (what to try instead)
+```
+
+## Components
+
+### `garment_catalog.py`
+- Hardcoded catalog of 20+ garments
+- Each with: color, season, silhouette, shoulder emphasis, weight
+
+### `vision_analyzer.py`
+- MediaPipe face detection → skin tone extraction
+- LAB color space analysis for undertone detection
+- Maps to 4 color seasons (Deep Winter, Cool Winter, Light Spring, Soft Autumn)
+
+### `rule_engine.py`
+- Penalty-based scoring system (0-100)
+- Rules for color matching and silhouette balance
+- Generates rule reasons for transparency
+
+### `gemini_explainer.py`
+- Calls Gemini 1.5 Flash to explain verdicts
+- Never decides verdict (rules only)
+- Generates pivot suggestions
+- Tone: honest, direct, no BS
+
+### `app.py`
+- Streamlit UI
+- Orchestrates the full pipeline
+- Displays results with visual feedback
+
 ## Features
 
-### Feature 1: Custom Garment Upload
-Upload your own garment images. The app automatically extracts color, brightness, and maps to compatible color seasons.
+✅ **Vision Analysis**
+- Skin tone detection via k-means clustering
+- Undertone determination (warm, cool, neutral)
+- Contrast level calculation
 
-**Manual controls:**
-- "How does it fit?" → Silhouette (fitted, oversized, straight)
-- "Shoulder detail?" → Shoulder emphasis (low, medium, high)
-- "How heavy does it feel?" → Visual weight (light, medium, heavy)
+✅ **Rule Engine**
+- Color season matching (-40 if wrong season)
+- Body shape + silhouette balance (-30 for inverted triangle + high shoulder emphasis)
+- Visual weight considerations
+- Undertone + brightness harmony
 
-### Feature 2: Percentage Scoring
-Clear suitability percentage (0-100%, capped at 95%) with honest verdict language.
+✅ **LLM Integration** (Optional)
+- Gemini generates honest explanations
+- Suggests specific pivot garments
+- Never breaks—falls back to rule-based explanations
 
-### Feature 3: Virtual Try-On
-Side-by-side comparison of your photo and the garment.
+✅ **User Interface**
+- Simple sidebar for uploads/selection
+- Visual verdict indicators (green/yellow/red)
+- Score breakdown for transparency
+- Mobile-friendly
 
-### Feature 4: Honest Copy & UX
-- Human-centered language ("drains your complexion" not "color mismatch")
-- Anatomical explanations ("makes your upper body look heavier")
-- Specific actionable pivots ("try with dropped shoulders")
-- Clean UI with no technical noise
+## Rules Applied
 
-## Core Algorithm
+### Color Season (Rule 1)
+If user's season ≠ garment season → **-40 points**
 
-### Scoring (Rule-Based)
+### Silhouette + Shoulder Emphasis (Rule 2)
+- High shoulder emphasis on broad-shouldered silhouettes → **-30 points**
+- Low shoulder emphasis on bottom-heavy silhouettes → **-25 points** (reduces balance)
 
-Starts at 100 points, applies penalties:
+### Visual Weight (Rule 3)
+Heavy pieces on balanced silhouettes → **-15 points**
 
-| Rule | Penalty | Trigger |
-|------|---------|---------|
-| Color season mismatch | -40 | Wrong season for skin tone |
-| Shoulder emphasis conflict | -30 | Inverted Triangle + high shoulders |
-| Body imbalance | -25 | Pear + low shoulder emphasis |
-| Heavy visual weight | -15 | Rectangle + heavy fabric |
-| Undertone + brightness | -10/-5 | Cool skin + very bright color |
-| Neckline vs contrast | -10 | Low contrast + turtleneck |
-| **Silhouette bonus** | **+10** | **Pear + fitted top** |
+### Undertone + Brightness (Rule 4)
+- Cool undertone + Very bright → **-10 points**
+- Warm undertone + Very bright → **-5 points** (minor)
 
-**Final Score = min(95, max(0, 100 - penalties))**
+### Neckline + Contrast (Rule 5)
+Low contrast face + Turtleneck → **-10 points** (overpowering)
 
-### Color Analysis
+### Silhouette Bonus (Rule 6)
+Fitted top on bottom-heavy silhouettes → **+10 points** (balancing)
 
-1. **Skin tone extraction** — K-means clustering on face
-2. **Undertone detection** — LAB color space analysis
-3. **Contrast calculation** — Brightness bucketing
-4. **Season mapping** — Undertone + contrast → color season
+## Scoring
 
-### Garment Analysis
-
-1. **Dominant color extraction** — K-means on non-background pixels
-2. **Color family detection** — LAB-based warm/cool/neutral
-3. **Brightness estimation** — LAB L value mapping
-4. **Season compatibility** — Color + brightness → seasons
-
-## Project Structure
-
-```
-Honest Stylist/
-├── app.py                      # Main Streamlit UI
-├── garment_catalog.py          # Garment database (20 items)
-├── rule_engine.py              # Rule-based scoring
-├── vision_analyzer.py          # User photo analysis
-├── garment_image_analyzer.py   # Custom garment analysis
-├── gemini_explainer.py         # Optional LLM layer
-├── README.md                   # This file
-├── .gitignore                  # Git ignore rules
-└── test_*.py                   # Test suites
-```
-
-## Testing
-
-```bash
-python test_feature1.py        # Custom garment upload
-python test_features_2_4.py    # Percentage & UI
-python test_polish.py          # Verdict language
-```
-
-## Philosophy
-
-- **Rule-based only** — No ML models for verdicts (deterministic, explainable)
-- **LLM is optional** — Explains verdicts, never decides them
-- **Human language** — No jargon, speaks like a stylist
-- **Fallback-safe** — Works even if APIs fail
-- **Honest, not mean** — Direct about what doesn't work, supportive with solutions
+- **≥ 60**: Works ✅
+- **40-59**: Risky ⚠️
+- **< 40**: Don't Buy ❌
 
 ## Garment Catalog
 
-20+ items with attributes: color, season, silhouette, shoulder emphasis, visual weight, etc.
+20+ items including:
+- Crisp White T-Shirt (Cool Winter, Light Spring)
+- Camel Oversized Sweater (Soft Autumn, Light Spring)
+- Black Turtleneck (Deep Winter, Cool Winter)
+- Coral Crop Top (Light Spring, Soft Autumn)
+- Navy Striped Shirt (Cool Winter, Deep Winter)
+- And more...
 
-## Future Enhancements
+## Fallbacks & Safety
 
-- [ ] Larger garment catalog (100+)
-- [ ] User profiles and history
-- [ ] Wardrobe compatibility analysis
-- [ ] Advanced color space mapping
-- [ ] ML-based body shape detection
+✅ If face not detected → Use neutral defaults
+✅ If pose not detected → Use pose fallback defaults
+✅ If Gemini API fails → Show rule-based explanation
+✅ If no rules match → Show generic positive feedback
+
+## Known Limitations
+
+- Photo must show face + shoulders clearly
+- Silhouette estimation is approximate
+- Color season mapping is simplified (4 categories)
+- Garment catalog is hardcoded (no training/updates)
+- VTON (virtual try-on) not included in MVP
+
+## Next Steps (Post-MVP)
+
+1. Add more garments to catalog (100+)
+2. Implement VTON for visual preview
+3. Add user feedback loop (thumbs up/down on verdicts)
+4. Build admin panel for catalog management
+5. Add before/after photos for pivot suggestions
+6. Implement user profiles for future comparisons
+
+## Testing
+
+Try these combinations:
+
+**Should work:** Cool Winter + Navy Striped Shirt
+**Should be risky:** High shoulder emphasis + Coral Crop Top
+**Should fail:** Oversized with low shoulders
+
+## Support
+
+For issues:
+1. Check photo shows face + shoulders
+2. Verify API key is set in .env
+3. Check console logs for error details
+4. Try different photo angles/lighting
 
 ---
 
-**Made with honesty, not kindness.** 🚀
+**Built for a 48-hour hackathon. Simple > Perfect.** 🚀

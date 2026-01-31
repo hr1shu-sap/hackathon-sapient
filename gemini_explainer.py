@@ -1,19 +1,6 @@
 import os
-import warnings
+import google.generativeai as genai
 from typing import Dict
-
-# Try new package first, fall back to deprecated package with a warning
-try:
-    import google.genai as genai  # preferred
-except Exception:
-    try:
-        import google.generativeai as genai  # deprecated
-        warnings.warn(
-            "All support for 'google.generativeai' has ended. Please switch to 'google.genai'.",
-            FutureWarning,
-        )
-    except Exception:
-        genai = None
 
 class GeminiExplainer:
     """Generate honest explanations using Gemini 1.5 Flash"""
@@ -24,24 +11,8 @@ class GeminiExplainer:
         if not api_key:
             raise ValueError("GOOGLE_API_KEY not set")
 
-        if genai is None:
-            raise ImportError(
-                "No Google GenAI client found. Install 'google-genai' or the older 'google-generativeai' package."
-            )
-
-        # Configure client if available (older package uses configure)
-        if hasattr(genai, "configure"):
-            genai.configure(api_key=api_key)
-
-        # Prefer GenerativeModel API if present, otherwise try to use client constructors
-        if hasattr(genai, "GenerativeModel"):
-            self.model = genai.GenerativeModel("gemini-1.5-flash")
-        elif hasattr(genai, "Client"):
-            # google.genai has a Client-based API; attempt to create a client wrapper
-            self.client = genai.Client(api_key=api_key)
-            self.model = None
-        else:
-            raise RuntimeError("Installed Google GenAI package does not expose a supported model API")
+        genai.configure(api_key=api_key)
+        self.model = genai.GenerativeModel("gemini-1.5-flash")
 
     def explain_verdict(
         self,
@@ -53,16 +24,8 @@ class GeminiExplainer:
     ) -> Dict:
         context = self._build_context(user_profile, garment, rule_reasons, score, verdict)
         prompt = self._create_prompt(context)
-        # Use available model/client interface
-        if hasattr(self, "model") and self.model is not None:
-            response = self.model.generate_content(prompt)
-            text = getattr(response, "text", str(response))
-        else:
-            # google.genai Client path (best-effort)
-            resp = self.client.generate_text(model="gemini-1.5-flash", prompt=prompt)
-            text = resp.text if hasattr(resp, "text") else str(resp)
-
-        return self._parse_response(text)
+        response = self.model.generate_content(prompt)
+        return self._parse_response(response.text)
 
     def _build_context(self, user_profile, garment, rule_reasons, score, verdict):
         reasons_text = "\n".join([f"- {r['text']} ({r['penalty']} pts)" for r in rule_reasons])
