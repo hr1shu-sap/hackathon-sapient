@@ -8,7 +8,7 @@ print("TESTING HONEST STYLIST MVP")
 print("=" * 60)
 
 # Test 1: Garment Catalog
-print("\n✓ Testing Garment Catalog...")
+print("\n[PASS] Testing Garment Catalog...")
 from garment_catalog import list_garments_display, get_garment
 garments = list_garments_display()
 print(f"  - Loaded {len(garments)} garments")
@@ -17,7 +17,7 @@ sample = get_garment("tee_001")
 print(f"  - Garment details: {sample['name']}, seasons: {sample['color_season']}")
 
 # Test 2: Rule Engine
-print("\n✓ Testing Rule Engine...")
+print("\n[PASS] Testing Rule Engine...")
 from rule_engine import StylingAnalyzer
 analyzer = StylingAnalyzer()
 user_profile = {
@@ -33,7 +33,7 @@ print(f"  - Score: {result['score']}/100")
 print(f"  - Reasons: {len(result['reasons'])} rules applied")
 
 # Test 3: Vision Analyzer (stub test)
-print("\n✓ Testing Vision Analyzer...")
+print("\n[PASS] Testing Vision Analyzer...")
 from vision_analyzer import VisionAnalyzer
 vision = VisionAnalyzer()
 print(f"  - VisionAnalyzer initialized")
@@ -42,7 +42,7 @@ print(f"  - Pose detector: OK")
 print(f"  - Methods: extract_skin_tone, analyze_body_shape, calculate_contrast")
 
 # Test 4: Gemini Explainer (check if API key exists)
-print("\n✓ Testing Gemini Explainer...")
+print("\n[PASS] Testing Gemini Explainer...")
 import os
 from dotenv import load_dotenv
 load_dotenv()

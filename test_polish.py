@@ -25,7 +25,7 @@ garment = {
 
 analyzer = StylingAnalyzer()
 result = analyzer.analyze(user, garment)
-print("\n✓ TEST 1: Color Season Mismatch")
+print("\n[PASS] TEST 1: Color Season Mismatch")
 print(f"  Verdict: {result['verdict']}")
 if result['reasons']:
     print(f"  Reason (HUMAN LANGUAGE): {result['reasons'][0]['text']}")
@@ -34,7 +34,7 @@ print()
 
 # Test 2: Pivot suggestion (should be specific)
 pivot = analyzer.generate_pivot_suggestion(user, garment)
-print("✓ TEST 2: Specific Pivot Suggestion")
+print("[PASS] TEST 2: Specific Pivot Suggestion")
 print(f"  {pivot}")
 print()
 
