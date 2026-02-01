@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appName": {
+      "value": "honest-stylist"
+    },
+    "registryName": {
+      "value": "honeststylist"
+    },
+    "location": {
+      "value": "eastus"
+    },
+    "skuName": {
+      "value": "B1"
+    },
+    "googleApiKey": {
+      "value": "YOUR_GOOGLE_API_KEY_HERE"
+    }
+  }
+}
