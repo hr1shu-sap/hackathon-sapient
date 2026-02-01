@@ -1,128 +1,146 @@
-# import os
-# import google.generativeai as genai
-# from typing import Dict
-
-# class GeminiExplainer:
-#     """Generate honest explanations using Gemini 1.5 Flash"""
-
-#     def __init__(self, api_key: str = None):
-#         if api_key is None:
-#             api_key = os.getenv("GOOGLE_API_KEY")
-#         if not api_key:
-#             raise ValueError("GOOGLE_API_KEY not set")
-
-#         genai.configure(api_key=api_key)
-#         self.model = genai.GenerativeModel("gemini-1.5-flash")
-
-#     def explain_verdict(
-#         self,
-#         verdict: str,
-#         user_profile: Dict,
-#         garment: Dict,
-#         rule_reasons: list,
-#         score: int
-#     ) -> Dict:
-#         context = self._build_context(user_profile, garment, rule_reasons, score, verdict)
-#         prompt = self._create_prompt(context)
-#         response = self.model.generate_content(prompt)
-#         return self._parse_response(response.text)
-
-#     def _build_context(self, user_profile, garment, rule_reasons, score, verdict):
-#         reasons_text = "\n".join([f"- {r['text']} ({r['penalty']} pts)" for r in rule_reasons])
-        
-#         # We now include the specific body ratios for the LLM to use as proof
-#         ratios = user_profile.get('body_ratios', {})
-#         s_h = ratios.get('s_h', 'N/A')
-#         w_h = ratios.get('w_h', 'N/A')
-
-#         context = f"""
-# USER STYLE DNA:
-# - Season: {user_profile.get('season')}
-# - Body Shape: {user_profile.get('body_shape')} (Shoulder-Hip: {s_h}, Waist-Hip: {w_h})
-# - Temperature: {user_profile.get('temperature')}
-# - Contrast: {user_profile.get('contrast')}
-
-# GARMENT:
-# - Name: {garment.get('name')}
-# - Silhouette: {garment.get('silhouette')}
-# - Shoulder Emphasis: {garment.get('shoulder_emphasis')}
-# - Neckline: {garment.get('neckline')}
-
-# RULE ENGINE VERDICT:
-# - Score: {score}/100
-# - Notes: {reasons_text}
-# """
-#         return context.strip()
-
-#     def _create_prompt(self, context):
-#         return f"""
-# {context}
-
-# You are 'The Honest Stylist'. Use the data above to give a scientific, direct, and slightly witty verdict.
-
-# TASK:
-# 1) EXPLANATION: Explain WHY this works or fails. Reference the specific body shape or ratios.
-# 2) PIVOT: Name a specific garment type or color from the catalog that would solve the primary conflict.
-# 3) PIVOT_WHY: Explain the geometric or color-science reason why the pivot is better.
-
-# RULES:
-# - Be brutally honest. If they look like a rectangle in a boxy tee, say so.
-# - Use the ratio data (e.g., "Your shoulder-to-hip ratio of {context.split('Shoulder-Hip: ')[1].split(',')[0]} confirms...")
-# - Keep it concise.
-
-# FORMAT:
-# EXPLANATION: ...
-# PIVOT: ...
-# PIVOT_WHY: ...
-# """.strip()
-
-#     def _parse_response(self, text: str) -> Dict:
-#         result = {"why_verdict": "", "pivot_suggestion": "", "pivot_reason": ""}
-#         for line in text.split("\n"):
-#             if line.startswith("EXPLANATION:"):
-#                 result["why_verdict"] = line.replace("EXPLANATION:", "").strip()
-#             elif line.startswith("PIVOT:"):
-#                 result["pivot_suggestion"] = line.replace("PIVOT: ", "").strip()
-#             elif line.startswith("PIVOT_WHY:"):
-#                 result["pivot_reason"] = line.replace("PIVOT_WHY: ", "").strip()
-#         return result
-
 # gemini_explainer.py
 
 import json
-import google.generativeai as genai
+from typing import Dict, Tuple
+from google import genai
+
 
 class GeminiExplainer:
-    def __init__(self, api_key: str):
-        genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel("gemini-1.5-flash")
+    """
+    Gemini-powered explanation engine for Honest Stylist.
 
-    def explain(self, user_profile, garment, rule_result):
+    Returns:
+    - prompt (for RLHF logging)
+    - explanation (for UI)
+    """
+
+    def __init__(self, api_key: str, model: str = "gemini-2.5-flash"):
+        self.api_key = "AIzaSyDF8LRHh-e4i34x2VNm1Kz0RtjCX-z56Lo"
+        if not api_key:
+            raise ValueError("GOOGLE_API_KEY is required")
+
+        self.client = genai.Client(api_key=api_key)
+        self.model = model
+
+    # --------------------------------------------------
+    # PUBLIC API
+    # --------------------------------------------------
+
+    def explain(
+        self,
+        user_profile: Dict,
+        garment: Dict,
+        rule_result: Dict
+    ) -> Tuple[str, str]:
+        """
+        Returns:
+        (prompt, explanation_text)
+        """
+
+        prompt = self._build_prompt(
+            user_profile=user_profile,
+            garment=garment,
+            rule_result=rule_result
+        )
+
+        try:
+            response = self.client.models.generate_content(
+                model=self.model,
+                contents=prompt
+            )
+
+            explanation = response.text.strip()
+
+            if not explanation:
+                explanation = "This piece technically works, but doesn’t add much visual advantage."
+
+            return prompt, explanation
+
+        except Exception as e:
+            # Fail gracefully — never break the UI
+            fallback = (
+                "This garment isn’t a strong visual match because it doesn’t align cleanly "
+                "with your proportions or color balance."
+            )
+            return prompt, fallback
+
+    # --------------------------------------------------
+    # PROMPT CONSTRUCTION
+    # --------------------------------------------------
+
+    def _build_prompt(
+        self,
+        user_profile: Dict,
+        garment: Dict,
+        rule_result: Dict
+    ) -> str:
+        """
+        Build a stable, JSON-safe prompt for Gemini.
+        """
+
+        body_balance = self._safe_json(user_profile.get("body_balance", {}))
+        color_profile = {
+            "season": user_profile.get("season"),
+            "contrast": user_profile.get("contrast"),
+        }
+
+        reasons = [
+            r.get("text")
+            for r in rule_result.get("reasons", [])
+        ]
+
+        verdict = rule_result.get("verdict")
+
         prompt = f"""
-You are a professional fashion stylist.
+You are a brutally honest professional fashion stylist.
+You do NOT sugarcoat feedback.
 
 USER BODY BALANCE:
-{json.dumps(user_profile["body_balance"], indent=2)}
+{json.dumps(body_balance, indent=2)}
 
 USER COLOR PROFILE:
-Season: {user_profile["season"]}
-Contrast: {user_profile["contrast"]}
+{json.dumps(color_profile, indent=2)}
 
-GARMENT:
-{json.dumps(garment, indent=2)}
+GARMENT BEING EVALUATED:
+{json.dumps(self._safe_json(garment), indent=2)}
 
-STYLE SIGNALS:
-{json.dumps(rule_result["signals"], indent=2)}
+STYLE ENGINE VERDICT:
+{verdict}
+
+STYLE SIGNALS FIRED:
+{json.dumps(reasons, indent=2)}
 
 TASK:
-1. Explain clearly why this garment works or does not work.
+1. Explain clearly WHY this garment works or does not work.
 2. Focus on proportions, visual balance, and color harmony.
-3. If it works, explain why it flatters.
-4. If it doesn’t, explain what visually feels off.
-5. Be concise, confident, and human.
+3. If it works, explain what it enhances.
+4. If it doesn't, explain what visually feels off.
+5. Be concise (2–4 sentences).
+6. No generic compliments. No hedging language.
 
-Tone: honest stylist, not polite assistant.
+Tone:
+Direct. Human. Stylist in a fitting room.
 """
 
-        response = self.model.generate_content(prompt)
-        return response.text.strip()
+        return prompt.strip()
+
+    # --------------------------------------------------
+    # SAFETY
+    # --------------------------------------------------
+
+    def _safe_json(self, obj):
+        """
+        Converts non-serializable objects safely.
+        """
+        try:
+            json.dumps(obj)
+            return obj
+        except Exception:
+            return self._stringify(obj)
+
+    def _stringify(self, obj):
+        if isinstance(obj, dict):
+            return {k: self._stringify(v) for k, v in obj.items()}
+        if isinstance(obj, list):
+            return [self._stringify(v) for v in obj]
+        return str(obj)

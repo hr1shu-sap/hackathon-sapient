@@ -1,172 +1,253 @@
-from typing import List, Dict
+# ai_recommender.py
+
+from typing import List, Dict, Optional
 import random
+
+from garment_catalog import get_full_catalog
+
 
 class AIRecommender:
     """
-    AI-powered recommendation layer.
-    Uses GenAI reasoning + rule constraints to suggest better alternatives.
+    AI-powered garment recommendation engine.
+
+    - Always returns top-K alternatives
+    - Uses garment_catalog as source of truth
+    - Uses Gemini for reasoning when available
+    - Falls back PER ITEM (never globally)
     """
 
     def __init__(self, gemini_client=None):
         """
-        gemini_client: optional GeminiExplainer or GenAI client
-        If None, falls back to heuristic ranking.
+        gemini_client: GeminiExplainer instance or None
         """
         self.gemini = gemini_client
 
+    # --------------------------------------------------
+    # PUBLIC API
     # --------------------------------------------------
 
     def recommend(
         self,
         user_profile: Dict,
         current_garment: Dict,
-        catalog: List[Dict],
         rule_result: Dict,
-        top_k: int = 3
+        top_k: int = 3,
+        catalog: Optional[List[Dict]] = None
     ) -> List[Dict]:
-        """
-        Return top-k alternative garments with reasons.
-        """
 
-        # Only recommend if current item is risky or bad
-        if rule_result["score"] >= 60:
+        # 1️⃣ Load catalog
+        if catalog is None:
+            catalog = get_full_catalog()
+
+        if not catalog:
             return []
 
-        # Step 1: Filter catalog by hard constraints
-        candidates = self._filter_catalog(
-            user_profile, current_garment, catalog
-        )
+        # 2️⃣ Remove current garment
+        candidates = [
+            g for g in catalog
+            if g.get("sku") != current_garment.get("sku")
+        ]
 
         if not candidates:
             return []
 
-        # Step 2: Rank candidates
+        # 3️⃣ Rank candidates
         ranked = self._rank_candidates(
-            user_profile, rule_result, candidates
+            user_profile=user_profile,
+            current_garment=current_garment,
+            rule_result=rule_result,
+            candidates=candidates
         )
 
-        # Step 3: Explain recommendations
-        return self._explain_recommendations(
-            user_profile,
-            current_garment,
-            ranked[:top_k]
-        )
-
-    # --------------------------------------------------
-    # FILTERING (Deterministic, Fast)
-    # --------------------------------------------------
-
-    def _filter_catalog(self, user_profile, current, catalog):
-        season = user_profile.get("season")
-        vibe = current.get("vibe")          # optional: interview, date, casual
-        category = current.get("category")  # dress, kurta, blazer
-
-        filtered = []
-
-        for g in catalog:
-            if g["sku"] == current["sku"]:
-                continue
-
-            if season not in g.get("color_season", []):
-                continue
-
-            if category and g.get("category") != category:
-                continue
-
-            if vibe and g.get("vibe") != vibe:
-                continue
-
-            filtered.append(g)
-
-        return filtered
-
-    # --------------------------------------------------
-    # RANKING (Rule-aware scoring)
-    # --------------------------------------------------
-
-    def _rank_candidates(self, user_profile, rule_result, candidates):
-        body = user_profile.get("body_profile", {})
-        signals = body.get("signals", {})
-
-        scored = []
-
-        for g in candidates:
-            score = 0
-
-            # Prefer waist definition if user has it
-            if signals.get("defined_waist") and g.get("waist_definition") == "high":
-                score += 2
-
-            # Avoid repeating known mistakes
-            for r in rule_result["reasons"]:
-                if "shoulder" in r["text"].lower() and g.get("shoulder_emphasis") == "low":
-                    score += 2
-                if "waist" in r["text"].lower() and g.get("waist_definition") == "high":
-                    score += 2
-
-            # Light randomness for variety
-            score += random.uniform(0, 0.5)
-
-            scored.append((score, g))
-
-        scored.sort(reverse=True, key=lambda x: x[0])
-        return [g for _, g in scored]
-
-    # --------------------------------------------------
-    # EXPLANATION (GenAI-powered, optional)
-    # --------------------------------------------------
-
-    def _explain_recommendations(
-        self,
-        user_profile,
-        current_garment,
-        recommendations
-    ):
+        # 4️⃣ Explain top-K
         results = []
-
-        for g in recommendations:
-            if self.gemini:
-                reason = self._genai_reason(
-                    user_profile, current_garment, g
-                )
-            else:
-                reason = self._fallback_reason(current_garment, g)
+        for g in ranked[:top_k]:
+            reason = self._safe_reason(
+                user_profile, current_garment, g, rule_result
+            )
 
             results.append({
-                "sku": g["sku"],
-                "name": g["name"],
+                "sku": g.get("sku"),
+                "name": g.get("name"),
+                "color": g.get("color_name"),
+                "silhouette": g.get("silhouette"),
                 "reason": reason
             })
 
         return results
 
-    def _genai_reason(self, user, current, candidate):
+    # --------------------------------------------------
+    # RANKING (DETERMINISTIC + LEARNED SIGNALS)
+    # --------------------------------------------------
+
+    def _rank_candidates(
+        self,
+        user_profile: Dict,
+        current_garment: Dict,
+        rule_result: Dict,
+        candidates: List[Dict]
+    ) -> List[Dict]:
+
+        season = user_profile.get("season")
+        signals = user_profile.get("body_profile", {}).get("signals", {})
+
+        scored = []
+
+        for g in candidates:
+            score = 0.0
+
+            # ---- Color harmony (strong signal) ----
+            if season in g.get("color_season", []):
+                score += 5.0
+
+            # ---- Body balance ----
+            if signals.get("shoulder_dominant") and g.get("shoulder_emphasis") == "low":
+                score += 1.5
+
+            if signals.get("hip_dominant") and g.get("shoulder_emphasis") == "high":
+                score += 1.5
+
+            # ---- Avoid previous mistakes ----
+            for r in rule_result.get("reasons", []):
+                text = r.get("text", "").lower()
+
+                if "shoulder" in text and g.get("shoulder_emphasis") == "low":
+                    score += 1.0
+
+                if "heavy" in text and g.get("visual_weight") == "light":
+                    score += 1.0
+
+                if "color" in text and season in g.get("color_season", []):
+                    score += 1.0
+
+            # ---- Diversity ----
+            score += random.uniform(0, 0.4)
+
+            scored.append((score, g))
+
+        scored.sort(key=lambda x: x[0], reverse=True)
+        return [g for _, g in scored]
+
+    # --------------------------------------------------
+    # REASONING (SAFE, PER-ITEM)
+    # --------------------------------------------------
+
+    def _safe_reason(
+        self,
+        user_profile: Dict,
+        current: Dict,
+        candidate: Dict,
+        rule_result: Dict
+    ) -> str:
+        """
+        Try Gemini → fallback per item (never raise)
+        """
+
+        if self.gemini:
+            try:
+                return self._genai_reason(
+                    user_profile, current, candidate, rule_result
+                )
+            except Exception as e:
+                # 👇 Loggable if you want RLHF later
+                print("⚠️ Gemini failed for recommendation:", e)
+
+        return self._fallback_reason(user_profile, current, candidate)
+
+    # --------------------------------------------------
+    # GENAI REASONING
+    # --------------------------------------------------
+
+    def _genai_reason(
+        self,
+        user: Dict,
+        current: Dict,
+        candidate: Dict,
+        rule_result: Dict
+    ) -> str:
+
+        penalties = [
+            r.get("text", "")
+            for r in rule_result.get("reasons", [])
+            if r.get("penalty", 0) > 0
+        ]
+
         prompt = f"""
-You are an expert fashion stylist.
+You are a sharp, opinionated fashion stylist.
 
-USER PROFILE:
+USER:
 - Season: {user.get("season")}
-- Body signals: {user.get("body_profile", {}).get("signals")}
+- Body balance signals: {user.get("body_profile", {}).get("signals")}
 
-CURRENT GARMENT:
-- Name: {current.get("name")}
-- Issues: It was rated as risky or not recommended.
+ORIGINAL GARMENT:
+- {current.get("name")}
+- Color: {current.get("color_name")}
+- Silhouette: {current.get("silhouette")}
 
-CANDIDATE GARMENT:
-- Name: {candidate.get("name")}
-- Silhouette: {candidate.get("silhouette")}
-- Waist definition: {candidate.get("waist_definition")}
+ISSUES IDENTIFIED:
+{penalties if penalties else "No major issues, but not optimal."}
+
+BETTER OPTION:
+- {candidate.get("name")}
 - Color: {candidate.get("color_name")}
+- Silhouette: {candidate.get("silhouette")}
+- Shoulder emphasis: {candidate.get("shoulder_emphasis")}
+- Visual weight: {candidate.get("visual_weight")}
 
 TASK:
-In ONE sentence, explain why the candidate garment is a better choice
-than the current one. Be direct and specific.
+Explain in ONE specific sentence why this option works better.
+No generic phrases. Mention balance or color explicitly.
 """
-        response = self.gemini.model.generate_content(prompt)
-        return response.text.strip()
 
-    def _fallback_reason(self, current, candidate):
-        return (
-            f"This keeps a similar vibe but improves balance through "
-            f"{candidate.get('silhouette')} and a more flattering color."
+        response = self.gemini.client.models.generate_content(
+            model=self.gemini.model_name,
+            contents=prompt
         )
+
+        text = response.text.strip()
+        if not text:
+            raise ValueError("Empty Gemini response")
+
+        return text
+
+    # --------------------------------------------------
+    # FALLBACK (SMART, NON-GENERIC)
+    # --------------------------------------------------
+
+    def _fallback_reason(
+        self,
+        user: Dict,
+        current: Dict,
+        candidate: Dict
+    ) -> str:
+
+        season = user.get("season")
+        signals = user.get("body_profile", {}).get("signals", {})
+        reasons = []
+
+        if season in candidate.get("color_season", []):
+            reasons.append(
+                f"the {candidate.get('color_name')} aligns better with your {season} palette"
+            )
+
+        if signals.get("shoulder_dominant") and candidate.get("shoulder_emphasis") == "low":
+            reasons.append(
+                "it softens the upper frame instead of adding bulk"
+            )
+
+        if signals.get("hip_dominant") and candidate.get("shoulder_emphasis") == "high":
+            reasons.append(
+                "the added shoulder structure restores visual balance"
+            )
+
+        if candidate.get("visual_weight") == "light":
+            reasons.append(
+                "the lighter fabric avoids a heavy, top-loaded look"
+            )
+
+        if not reasons:
+            return (
+                "this piece avoids the balance and proportion issues of the original choice"
+            )
+
+        return "This works better because " + ", ".join(reasons[:2]) + "."
