@@ -1,0 +1,2359 @@
+{
+  "honest_stylist\\app\\app.py": {
+    "filename": "app.py",
+    "path": "honest_stylist\\app\\app.py",
+    "version": "1.1",
+    "chunks": {
+      "801978": {
+        "user": "Ayusha Nayak",
+        "model": "gpt-4.1",
+        "timestamp": 1769869192,
+        "platform": "VisualStudioCode",
+        "product": "AIPP",
+        "productVersion": "2.1.2",
+        "source": "chat",
+        "type": "applyChanges",
+        "hash": "3ee0fa5f",
+        "messageId": "system_b8c908c0-feaf-11f0-bfda-15696a82a320",
+        "codeBlockId": null,
+        "isActive": true
+      },
+      "e33d26": {
+        "user": "Ayusha Nayak",
+        "model": "claude-sonnet-4@20250514",
+        "timestamp": 1769862597,
+        "platform": "VisualStudioCode",
+        "product": "AIPP",
+        "productVersion": "2.1.2",
+        "source": "chat",
+        "type": "compareCode",
+        "hash": "73e7a4de",
+        "messageId": "system_fccec5b0-fe9f-11f0-8c9d-cba2a7a00901",
+        "codeBlockId": "system_fccec5b0-fe9f-11f0-8c9d-cba2a7a00901-Codeblock-2",
+        "isActive": false
+      },
+      "6f8190": {
+        "user": "Ayusha Nayak",
+        "model": "claude-sonnet-4@20250514",
+        "timestamp": 1769862604,
+        "platform": "VisualStudioCode",
+        "product": "AIPP",
+        "productVersion": "2.1.2",
+        "source": "chat",
+        "type": "compareCode",
+        "hash": "73e7a4de",
+        "messageId": "system_fccec5b0-fe9f-11f0-8c9d-cba2a7a00901",
+        "codeBlockId": "system_fccec5b0-fe9f-11f0-8c9d-cba2a7a00901-Codeblock-2",
+        "isActive": true
+      }
+    },
+    "lines": {
+      "0": {
+        "chunkId": "6f8190",
+        "hash": "9cef9ccb",
+        "encoded": "%22%22%22",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "1": {
+        "chunkId": "6f8190",
+        "hash": "57bc6397",
+        "encoded": "HONEST%20STYLIST",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "2": {
+        "chunkId": "6f8190",
+        "hash": "73ec45be",
+        "encoded": "A%20brutally%20honest%20fashion%20advisor",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "4": {
+        "chunkId": "6f8190",
+        "hash": "8b2a1429",
+        "encoded": "STRATEGY:",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "5": {
+        "chunkId": "6f8190",
+        "hash": "41286f38",
+        "encoded": "-%20Most%20fashion%20tech%20optimizes%20for%20selling%20more%20clothes",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "6": {
+        "chunkId": "6f8190",
+        "hash": "70f65c2e",
+        "encoded": "-%20Honest%20Stylist%20optimizes%20for%20helping%20users%20avoid%20bad%20purchases",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "7": {
+        "chunkId": "6f8190",
+        "hash": "c1383ec7",
+        "encoded": "-%20Reduce%20returns%20through%20honest,%20anatomy-aware%20feedback%20before%20checkout",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "9": {
+        "chunkId": "6f8190",
+        "hash": "4ba0e4c0",
+        "encoded": "HYPOTHESIS:",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "10": {
+        "chunkId": "6f8190",
+        "hash": "89223015",
+        "encoded": "-%20If%20users%20receive%20honest,%20anatomy-aware%20styling%20feedback%20before%20purchase,",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "11": {
+        "chunkId": "6f8190",
+        "hash": "3a227aa0",
+        "encoded": "they%20will%20trust%20the%20platform%20more%20and%20make%20better%20decisions",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "13": {
+        "chunkId": "6f8190",
+        "hash": "d9470270",
+        "encoded": "FLOW:",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "14": {
+        "chunkId": "6f8190",
+        "hash": "84860f85",
+        "encoded": "1.%20Upload%20photo%20(face%20+%20shoulders)",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "15": {
+        "chunkId": "6f8190",
+        "hash": "ff380254",
+        "encoded": "2.%20Select%20or%20upload%20garment",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "16": {
+        "chunkId": "6f8190",
+        "hash": "8048814c",
+        "encoded": "3.%20Click%20%22Be%20Honest%22",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "17": {
+        "chunkId": "6f8190",
+        "hash": "e689cc47",
+        "encoded": "4.%20Get%20verdict%20+%20explanation%20+%20actionable%20pivot",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "18": {
+        "chunkId": "6f8190",
+        "hash": "4c60f0d0",
+        "encoded": "%22%22%22",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "20": {
+        "chunkId": "6f8190",
+        "hash": "120ffbfb",
+        "encoded": "import%20streamlit%20as%20st",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "21": {
+        "chunkId": "6f8190",
+        "hash": "2f3ca0e4",
+        "encoded": "import%20os",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "22": {
+        "chunkId": "6f8190",
+        "hash": "58af7858",
+        "encoded": "from%20pathlib%20import%20Path",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "23": {
+        "chunkId": "6f8190",
+        "hash": "75587ed1",
+        "encoded": "from%20PIL%20import%20Image",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "24": {
+        "chunkId": "6f8190",
+        "hash": "309e8e3e",
+        "encoded": "import%20tempfile",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "25": {
+        "chunkId": "6f8190",
+        "hash": "3e477c4f",
+        "encoded": "import%20uuid",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "26": {
+        "chunkId": "6f8190",
+        "hash": "feff9bf3",
+        "encoded": "import%20warnings",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "32": {
+        "chunkId": "6f8190",
+        "hash": "0ea4ffa8",
+        "encoded": "warnings.filterwarnings('ignore')",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "34": {
+        "chunkId": "6f8190",
+        "hash": "eefef3d0",
+        "encoded": "from%20agents%20import%20PhotoAnalysisAgent,%20GarmentSelectionAgent,%20VerdictAgent,%20PivotAgent",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "35": {
+        "chunkId": "6f8190",
+        "hash": "586dc767",
+        "encoded": "from%20garment_image_analyzer%20import%20GarmentImageAnalyzer",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "37": {
+        "chunkId": "6f8190",
+        "hash": "6a79f695",
+        "encoded": "st.set_page_config(",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "38": {
+        "chunkId": "6f8190",
+        "hash": "9e09f924",
+        "encoded": "page_title=%22Honest%20Stylist%22,",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "39": {
+        "chunkId": "6f8190",
+        "hash": "79507f8a",
+        "encoded": "page_icon=%22%F0%9F%91%94%22,",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "40": {
+        "chunkId": "6f8190",
+        "hash": "0175983f",
+        "encoded": "layout=%22wide%22,",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "41": {
+        "chunkId": "6f8190",
+        "hash": "ddc21df9",
+        "encoded": "initial_sidebar_state=%22collapsed%22",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "42": {
+        "chunkId": "6f8190",
+        "hash": "a1df8512",
+        "encoded": ")",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "44": {
+        "chunkId": "6f8190",
+        "hash": "d2a069a6",
+        "encoded": "st.markdown(%22%22%22",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "45": {
+        "chunkId": "6f8190",
+        "hash": "8ab18dfc",
+        "encoded": "%3Cstyle%3E",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "46": {
+        "chunkId": "6f8190",
+        "hash": "7ec12431",
+        "encoded": ".verdict-works%20%7B",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "47": {
+        "chunkId": "6f8190",
+        "hash": "5c04f590",
+        "encoded": "background-color:%20#d4edda;",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "48": {
+        "chunkId": "6f8190",
+        "hash": "e0eed42b",
+        "encoded": "border-left:%205px%20solid%20#28a745;",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "49": {
+        "chunkId": "6f8190",
+        "hash": "ab31d44b",
+        "encoded": "padding:%2015px;",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "50": {
+        "chunkId": "6f8190",
+        "hash": "23fb64eb",
+        "encoded": "border-radius:%204px;",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "51": {
+        "chunkId": "6f8190",
+        "hash": "21aeba4b",
+        "encoded": "color:%20#155724;",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "52": {
+        "chunkId": "6f8190",
+        "hash": "88fadba2",
+        "encoded": "%7D",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "53": {
+        "chunkId": "6f8190",
+        "hash": "ac22663b",
+        "encoded": ".verdict-risky%20%7B",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "54": {
+        "chunkId": "6f8190",
+        "hash": "1724168c",
+        "encoded": "background-color:%20#fff3cd;",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "55": {
+        "chunkId": "6f8190",
+        "hash": "b1b2be0b",
+        "encoded": "border-left:%205px%20solid%20#ffc107;",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "56": {
+        "chunkId": "6f8190",
+        "hash": "27d9bca1",
+        "encoded": "padding:%2015px;",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "57": {
+        "chunkId": "6f8190",
+        "hash": "0170fb85",
+        "encoded": "border-radius:%204px;",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "58": {
+        "chunkId": "6f8190",
+        "hash": "7f3bd916",
+        "encoded": "color:%20#856404;",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "59": {
+        "chunkId": "6f8190",
+        "hash": "309dd352",
+        "encoded": "%7D",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "60": {
+        "chunkId": "6f8190",
+        "hash": "fa1ce954",
+        "encoded": ".verdict-dont-buy%20%7B",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "61": {
+        "chunkId": "6f8190",
+        "hash": "30482763",
+        "encoded": "background-color:%20#f8d7da;",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "62": {
+        "chunkId": "6f8190",
+        "hash": "91a658bb",
+        "encoded": "border-left:%205px%20solid%20#dc3545;",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "63": {
+        "chunkId": "6f8190",
+        "hash": "b11b4cd1",
+        "encoded": "padding:%2015px;",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "64": {
+        "chunkId": "6f8190",
+        "hash": "076d96ea",
+        "encoded": "border-radius:%204px;",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "65": {
+        "chunkId": "6f8190",
+        "hash": "a00e4b4b",
+        "encoded": "color:%20#721c24;",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "66": {
+        "chunkId": "6f8190",
+        "hash": "f706ff69",
+        "encoded": "%7D",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "67": {
+        "chunkId": "6f8190",
+        "hash": "dc531fec",
+        "encoded": "%3C/style%3E",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "68": {
+        "chunkId": "6f8190",
+        "hash": "36a3eae5",
+        "encoded": "%22%22%22,%20unsafe_allow_html=True)",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "70": {
+        "chunkId": "6f8190",
+        "hash": "b306844b",
+        "encoded": "st.title(%22%F0%9F%91%94%20Honest%20Stylist%22)",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "71": {
+        "chunkId": "6f8190",
+        "hash": "ab503448",
+        "encoded": "st.subheader(%22Get%20brutally%20honest%20styling%20advice%20in%20seconds%22)",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "72": {
+        "chunkId": "6f8190",
+        "hash": "3005f447",
+        "encoded": "st.markdown(%22%22%22",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "73": {
+        "chunkId": "6f8190",
+        "hash": "dbccfb59",
+        "encoded": "**Most%20fashion%20tech%20optimizes%20for%20selling%20more%20clothes.**",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "74": {
+        "chunkId": "6f8190",
+        "hash": "1205cf7d",
+        "encoded": "**We%20optimize%20for%20helping%20you%20avoid%20bad%20purchases.**",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "76": {
+        "chunkId": "6f8190",
+        "hash": "bc8fb396",
+        "encoded": "Get%20anatomy-aware%20feedback%20on%20whether%20a%20piece%20actually%20suits%20you%E2%80%94before%20checkout.",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "77": {
+        "chunkId": "6f8190",
+        "hash": "bd843074",
+        "encoded": "%22%22%22)",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "78": {
+        "chunkId": "6f8190",
+        "hash": "e4949c1b",
+        "encoded": "st.divider()",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "80": {
+        "chunkId": "6f8190",
+        "hash": "b153a699",
+        "encoded": "with%20st.sidebar:",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "81": {
+        "chunkId": "6f8190",
+        "hash": "5761151c",
+        "encoded": "st.header(%22Setup%22)",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "83": {
+        "chunkId": "6f8190",
+        "hash": "a95e44aa",
+        "encoded": "uploaded_photo%20=%20st.file_uploader(",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "84": {
+        "chunkId": "6f8190",
+        "hash": "d035ad6f",
+        "encoded": "%221%EF%B8%8F%E2%83%A3%20Upload%20your%20photo%20(upper%20body%20or%20face)%22,",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "85": {
+        "chunkId": "6f8190",
+        "hash": "b5ebbbea",
+        "encoded": "type=%5B%22jpg%22,%20%22jpeg%22,%20%22png%22%5D,",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "89": {
+        "chunkId": "6f8190",
+        "hash": "a497579a",
+        "encoded": ")",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "90": {
+        "chunkId": "6f8190",
+        "hash": "dc928c93",
+        "encoded": "temp_path%20=%20None",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "91": {
+        "chunkId": "6f8190",
+        "hash": "6247800a",
+        "encoded": "if%20uploaded_photo%20is%20not%20None:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "95": {
+        "chunkId": "6f8190",
+        "hash": "d42e953b",
+        "encoded": "else:",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "96": {
+        "chunkId": "6f8190",
+        "hash": "5be1c5c0",
+        "encoded": "temp_dir%20=%20tempfile.gettempdir()",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "97": {
+        "chunkId": "6f8190",
+        "hash": "cc356faf",
+        "encoded": "unique_photo_name%20=%20f%22%7Buuid.uuid4()%7D_%7Buploaded_photo.name%7D%22",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "98": {
+        "chunkId": "6f8190",
+        "hash": "9fc27d4c",
+        "encoded": "temp_path%20=%20os.path.join(temp_dir,%20unique_photo_name)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "99": {
+        "chunkId": "6f8190",
+        "hash": "6e03d051",
+        "encoded": "with%20open(temp_path,%20%22wb%22)%20as%20f:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "100": {
+        "chunkId": "6f8190",
+        "hash": "640b5174",
+        "encoded": "f.write(uploaded_photo.getbuffer())",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "102": {
+        "chunkId": "6f8190",
+        "hash": "a07ec1a2",
+        "encoded": "manual_body_shape%20=%20st.selectbox(",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "103": {
+        "chunkId": "6f8190",
+        "hash": "f00091a4",
+        "encoded": "%22Select%20your%20body%20shape%20(for%20more%20honest%20results):%22,",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "104": {
+        "chunkId": "6f8190",
+        "hash": "90c4b803",
+        "encoded": "%5B%22Inverted%20Triangle%22,%20%22Pear%22,%20%22Rectangle%22,%20%22Hourglass%22,%20%22Apple%22%5D,",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "105": {
+        "chunkId": "6f8190",
+        "hash": "0f1d7afd",
+        "encoded": "index=2",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "106": {
+        "chunkId": "6f8190",
+        "hash": "48843cf2",
+        "encoded": ")",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "110": {
+        "chunkId": "6f8190",
+        "hash": "585fca1a",
+        "encoded": "st.divider()",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "112": {
+        "chunkId": "6f8190",
+        "hash": "4fca9991",
+        "encoded": "garment_source%20=%20st.radio(",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "113": {
+        "chunkId": "6f8190",
+        "hash": "68ec84d9",
+        "encoded": "%222%EF%B8%8F%E2%83%A3%20How%20to%20evaluate%20a%20garment:%22,",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "114": {
+        "chunkId": "6f8190",
+        "hash": "47b849a8",
+        "encoded": "%5B%22From%20catalog%22,%20%22Upload%20your%20own%22%5D,",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "115": {
+        "chunkId": "6f8190",
+        "hash": "c18b47f9",
+        "encoded": "horizontal=False",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "116": {
+        "chunkId": "6f8190",
+        "hash": "62fea089",
+        "encoded": ")",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "118": {
+        "chunkId": "6f8190",
+        "hash": "595bc306",
+        "encoded": "selected_sku%20=%20None",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "119": {
+        "chunkId": "6f8190",
+        "hash": "442ef09f",
+        "encoded": "garment%20=%20None",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "120": {
+        "chunkId": "6f8190",
+        "hash": "b2972eb7",
+        "encoded": "garment_image_path%20=%20None",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "122": {
+        "chunkId": "6f8190",
+        "hash": "86891867",
+        "encoded": "catalog_path%20=%20os.path.join(os.path.dirname(__file__),%20%22garment_catalog.json%22)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "123": {
+        "chunkId": "6f8190",
+        "hash": "4ab8624d",
+        "encoded": "garment_agent%20=%20GarmentSelectionAgent(catalog_path)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "125": {
+        "chunkId": "6f8190",
+        "hash": "b33513e9",
+        "encoded": "if%20garment_source%20==%20%22From%20catalog%22:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "126": {
+        "chunkId": "6f8190",
+        "hash": "babc0eb3",
+        "encoded": "garment_options%20=%20garment_agent.get_options()",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "127": {
+        "chunkId": "6f8190",
+        "hash": "97448d3d",
+        "encoded": "selected_garment_display%20=%20st.selectbox(",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "128": {
+        "chunkId": "6f8190",
+        "hash": "53f2678c",
+        "encoded": "%22Pick%20a%20garment:%22,",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "129": {
+        "chunkId": "6f8190",
+        "hash": "8496a8b7",
+        "encoded": "options=garment_options,",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "130": {
+        "chunkId": "6f8190",
+        "hash": "96d4164d",
+        "encoded": "format_func=lambda%20x:%20x%5B1%5D",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "131": {
+        "chunkId": "6f8190",
+        "hash": "177bd539",
+        "encoded": ")",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "132": {
+        "chunkId": "6f8190",
+        "hash": "9dcdbd60",
+        "encoded": "if%20selected_garment_display:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "133": {
+        "chunkId": "6f8190",
+        "hash": "0462af5e",
+        "encoded": "selected_sku%20=%20selected_garment_display%5B0%5D",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "134": {
+        "chunkId": "6f8190",
+        "hash": "b08836a5",
+        "encoded": "garment%20=%20garment_agent.get_garment(selected_sku)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "135": {
+        "chunkId": "6f8190",
+        "hash": "a2a1c7a0",
+        "encoded": "else:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "136": {
+        "chunkId": "6f8190",
+        "hash": "268d223f",
+        "encoded": "uploaded_garment%20=%20st.file_uploader(",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "137": {
+        "chunkId": "6f8190",
+        "hash": "3238b578",
+        "encoded": "%22Upload%20garment%20image%20(flat%20lay%20or%20product%20photo)%22,",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "138": {
+        "chunkId": "6f8190",
+        "hash": "2dc46eab",
+        "encoded": "type=%5B%22jpg%22,%20%22jpeg%22,%20%22png%22%5D,",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "142": {
+        "chunkId": "6f8190",
+        "hash": "a578af76",
+        "encoded": ")",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "143": {
+        "chunkId": "6f8190",
+        "hash": "f335351a",
+        "encoded": "if%20uploaded_garment%20is%20not%20None:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "147": {
+        "chunkId": "6f8190",
+        "hash": "aa7af4cf",
+        "encoded": "else:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "148": {
+        "chunkId": "6f8190",
+        "hash": "ee51af30",
+        "encoded": "temp_dir%20=%20tempfile.gettempdir()",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "149": {
+        "chunkId": "6f8190",
+        "hash": "60e421a8",
+        "encoded": "unique_garment_name%20=%20f%22%7Buuid.uuid4()%7D_%7Buploaded_garment.name%7D%22",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "150": {
+        "chunkId": "6f8190",
+        "hash": "ead3febe",
+        "encoded": "garment_image_path%20=%20os.path.join(temp_dir,%20unique_garment_name)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "151": {
+        "chunkId": "6f8190",
+        "hash": "528d96e8",
+        "encoded": "with%20open(garment_image_path,%20%22wb%22)%20as%20f:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "152": {
+        "chunkId": "6f8190",
+        "hash": "e8d8c614",
+        "encoded": "f.write(uploaded_garment.getbuffer())",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "155": {
+        "chunkId": "6f8190",
+        "hash": "b5af501f",
+        "encoded": "st.divider()",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "156": {
+        "chunkId": "6f8190",
+        "hash": "523cfc0f",
+        "encoded": "analyze_clicked%20=%20st.button(",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "157": {
+        "chunkId": "6f8190",
+        "hash": "881c5366",
+        "encoded": "%22%F0%9F%94%A5%20Be%20Honest%22,",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "158": {
+        "chunkId": "6f8190",
+        "hash": "be65f07f",
+        "encoded": "use_container_width=True,",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "159": {
+        "chunkId": "6f8190",
+        "hash": "f00bd324",
+        "encoded": "type=%22primary%22",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "160": {
+        "chunkId": "6f8190",
+        "hash": "08516221",
+        "encoded": ")",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "162": {
+        "chunkId": "6f8190",
+        "hash": "dc3b4506",
+        "encoded": "if%20analyze_clicked:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "163": {
+        "chunkId": "6f8190",
+        "hash": "8ab30b2b",
+        "encoded": "if%20temp_path%20is%20None:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "164": {
+        "chunkId": "6f8190",
+        "hash": "868cc797",
+        "encoded": "st.error(%22%E2%9D%8C%20Please%20upload%20a%20photo%20first%22)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "165": {
+        "chunkId": "6f8190",
+        "hash": "4442f8bb",
+        "encoded": "elif%20garment_source%20==%20%22From%20catalog%22%20and%20selected_sku%20is%20None:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "166": {
+        "chunkId": "6f8190",
+        "hash": "da95e4a0",
+        "encoded": "st.error(%22%E2%9D%8C%20Please%20select%20a%20garment%20from%20the%20catalog%22)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "167": {
+        "chunkId": "6f8190",
+        "hash": "7d893eaa",
+        "encoded": "elif%20garment_source%20==%20%22Upload%20your%20own%22%20and%20garment_image_path%20is%20None:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "168": {
+        "chunkId": "6f8190",
+        "hash": "6c4dda2d",
+        "encoded": "st.error(%22%E2%9D%8C%20Please%20upload%20a%20garment%20image%22)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "169": {
+        "chunkId": "6f8190",
+        "hash": "29584df1",
+        "encoded": "else:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "170": {
+        "chunkId": "6f8190",
+        "hash": "4b776f7a",
+        "encoded": "with%20st.spinner(%22Analyzing%20your%20style...%22):",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "171": {
+        "chunkId": "6f8190",
+        "hash": "7b6bb9f1",
+        "encoded": "try:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "172": {
+        "chunkId": "6f8190",
+        "hash": "bcbd9e6c",
+        "encoded": "photo_agent%20=%20PhotoAnalysisAgent()",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "173": {
+        "chunkId": "801978",
+        "hash": "cb90a858",
+        "encoded": "try:",
+        "prevChunkIds": []
+      },
+      "174": {
+        "chunkId": "6f8190",
+        "hash": "2021db2b",
+        "encoded": "user_profile%20=%20photo_agent.analyze(temp_path)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "175": {
+        "chunkId": "6f8190",
+        "hash": "bbe9be28",
+        "encoded": "except%20Exception%20as%20e:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "176": {
+        "chunkId": "801978",
+        "hash": "fc5506bb",
+        "encoded": "logger.error(f%22Photo%20analysis%20failed:%20%7Be%7D%22)",
+        "prevChunkIds": []
+      },
+      "177": {
+        "chunkId": "801978",
+        "hash": "cac7ed0e",
+        "encoded": "st.error(%22%E2%9D%8C%20Failed%20to%20analyze%20photo.%20Please%20try%20another%20image.%22)",
+        "prevChunkIds": []
+      },
+      "178": {
+        "chunkId": "801978",
+        "hash": "85eed818",
+        "encoded": "st.stop()",
+        "prevChunkIds": []
+      },
+      "179": {
+        "chunkId": "6f8190",
+        "hash": "94a84e4f",
+        "encoded": "user_profile%5B%22body_shape%22%5D%20=%20manual_body_shape",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "180": {
+        "chunkId": "801978",
+        "hash": "c49f2dc8",
+        "encoded": "st.write(%22User%20profile%20(debug):%22,%20user_profile)",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "183": {
+        "chunkId": "6f8190",
+        "hash": "2e3ec1ee",
+        "encoded": "if%20garment_source%20==%20%22From%20catalog%22:",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "184": {
+        "chunkId": "6f8190",
+        "hash": "38ff7915",
+        "encoded": "pass",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "185": {
+        "chunkId": "6f8190",
+        "hash": "1127d259",
+        "encoded": "else:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "186": {
+        "chunkId": "6f8190",
+        "hash": "bc4fad20",
+        "encoded": "garment_analyzer%20=%20GarmentImageAnalyzer()",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "187": {
+        "chunkId": "801978",
+        "hash": "e82dcd3c",
+        "encoded": "try:",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "188": {
+        "chunkId": "6f8190",
+        "hash": "ae433781",
+        "encoded": "garment_analysis%20=%20garment_analyzer.analyze_garment_image(garment_image_path)",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "189": {
+        "chunkId": "801978",
+        "hash": "87a81044",
+        "encoded": "except%20Exception%20as%20e:",
+        "prevChunkIds": []
+      },
+      "190": {
+        "chunkId": "801978",
+        "hash": "ce3573e2",
+        "encoded": "logger.error(f%22Garment%20analysis%20failed:%20%7Be%7D%22)",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "191": {
+        "chunkId": "801978",
+        "hash": "5829883e",
+        "encoded": "st.error(%22%E2%9D%8C%20Failed%20to%20analyze%20garment%20image.%20Please%20try%20another%20image.%22)",
+        "prevChunkIds": []
+      },
+      "192": {
+        "chunkId": "801978",
+        "hash": "b9ca6b1a",
+        "encoded": "st.stop()",
+        "prevChunkIds": []
+      },
+      "193": {
+        "chunkId": "6f8190",
+        "hash": "c12e16f2",
+        "encoded": "col1,%20col2,%20col3%20=%20st.columns(3)",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "194": {
+        "chunkId": "6f8190",
+        "hash": "079088db",
+        "encoded": "with%20col1:",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "195": {
+        "chunkId": "6f8190",
+        "hash": "546d6b28",
+        "encoded": "silhouette%20=%20st.selectbox(%22How%20does%20it%20fit?%22,%20%5B%22fitted%22,%20%22oversized%22,%20%22straight%22%5D)",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "196": {
+        "chunkId": "6f8190",
+        "hash": "eeebb23e",
+        "encoded": "with%20col2:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "197": {
+        "chunkId": "6f8190",
+        "hash": "4b691418",
+        "encoded": "shoulder_emphasis%20=%20st.selectbox(%22Shoulder%20detail?%22,%20%5B%22low%22,%20%22medium%22,%20%22high%22%5D)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "198": {
+        "chunkId": "6f8190",
+        "hash": "17fd2dbe",
+        "encoded": "with%20col3:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "199": {
+        "chunkId": "6f8190",
+        "hash": "4792720a",
+        "encoded": "visual_weight%20=%20st.selectbox(%22How%20heavy%20does%20it%20feel?%22,%20%5B%22light%22,%20%22medium%22,%20%22heavy%22%5D)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "200": {
+        "chunkId": "6f8190",
+        "hash": "5ca5002e",
+        "encoded": "possible_seasons%20=%20garment_analyzer.map_color_to_season(",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "201": {
+        "chunkId": "6f8190",
+        "hash": "c878d0c5",
+        "encoded": "garment_analysis%5B%22color_family%22%5D,%20garment_analysis%5B%22brightness%22%5D)",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "202": {
+        "chunkId": "6f8190",
+        "hash": "c544be32",
+        "encoded": "garment%20=%20%7B",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "203": {
+        "chunkId": "6f8190",
+        "hash": "c302b545",
+        "encoded": "%22name%22:%20f%22Your%20%7Bgarment_analysis%5B'color_hex'%5D%7D%20garment%22,",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "204": {
+        "chunkId": "6f8190",
+        "hash": "84293841",
+        "encoded": "%22color_name%22:%20garment_analysis%5B%22color_hex%22%5D,",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "205": {
+        "chunkId": "6f8190",
+        "hash": "010cd7c6",
+        "encoded": "%22color_season%22:%20possible_seasons,",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "206": {
+        "chunkId": "6f8190",
+        "hash": "9e99ff32",
+        "encoded": "%22silhouette%22:%20silhouette,",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "207": {
+        "chunkId": "6f8190",
+        "hash": "897e6cd6",
+        "encoded": "%22shoulder_emphasis%22:%20shoulder_emphasis,",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "208": {
+        "chunkId": "6f8190",
+        "hash": "32885eb6",
+        "encoded": "%22visual_weight%22:%20visual_weight,",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "209": {
+        "chunkId": "6f8190",
+        "hash": "23c84913",
+        "encoded": "%22neckline%22:%20%22unknown%22,",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "210": {
+        "chunkId": "6f8190",
+        "hash": "31956b12",
+        "encoded": "%22brightness%22:%20garment_analysis%5B%22brightness%22%5D",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "211": {
+        "chunkId": "6f8190",
+        "hash": "ae0130b5",
+        "encoded": "%7D",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "212": {
+        "chunkId": "801978",
+        "hash": "e4b45764",
+        "encoded": "st.write(%22Garment%20analysis%20(debug):%22,%20garment_analysis)",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "214": {
+        "chunkId": "6f8190",
+        "hash": "4e058fd5",
+        "encoded": "verdict_agent%20=%20VerdictAgent()",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "215": {
+        "chunkId": "801978",
+        "hash": "bc07284c",
+        "encoded": "try:",
+        "prevChunkIds": []
+      },
+      "216": {
+        "chunkId": "6f8190",
+        "hash": "c3a7a96c",
+        "encoded": "rule_result%20=%20verdict_agent.score(user_profile,%20garment)",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "217": {
+        "chunkId": "801978",
+        "hash": "3da9cca6",
+        "encoded": "except%20Exception%20as%20e:",
+        "prevChunkIds": []
+      },
+      "218": {
+        "chunkId": "801978",
+        "hash": "684540b9",
+        "encoded": "logger.error(f%22Verdict%20scoring%20failed:%20%7Be%7D%22)",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "219": {
+        "chunkId": "801978",
+        "hash": "d9e011b3",
+        "encoded": "st.error(%22%E2%9D%8C%20Failed%20to%20score%20verdict.%20Please%20try%20again.%22)",
+        "prevChunkIds": []
+      },
+      "220": {
+        "chunkId": "801978",
+        "hash": "c7b645b7",
+        "encoded": "st.stop()",
+        "prevChunkIds": []
+      },
+      "221": {
+        "chunkId": "6f8190",
+        "hash": "f7bce0bb",
+        "encoded": "percentage%20=%20min(95,%20max(0,%20rule_result%5B'score'%5D))",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "224": {
+        "chunkId": "6f8190",
+        "hash": "c8e61c2d",
+        "encoded": "pivot_agent%20=%20PivotAgent()",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "225": {
+        "chunkId": "801978",
+        "hash": "aea03db4",
+        "encoded": "try:",
+        "prevChunkIds": []
+      },
+      "226": {
+        "chunkId": "6f8190",
+        "hash": "8c96e59e",
+        "encoded": "explanation%20=%20pivot_agent.suggest(",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "227": {
+        "chunkId": "6f8190",
+        "hash": "8e3d7039",
+        "encoded": "verdict=rule_result%5B%22verdict%22%5D,",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "228": {
+        "chunkId": "6f8190",
+        "hash": "7b8c2c44",
+        "encoded": "user_profile=user_profile,",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "229": {
+        "chunkId": "6f8190",
+        "hash": "c5e9bdb7",
+        "encoded": "garment=garment,",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "230": {
+        "chunkId": "6f8190",
+        "hash": "fb7679e9",
+        "encoded": "reasons=rule_result%5B%22reasons%22%5D,",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "231": {
+        "chunkId": "6f8190",
+        "hash": "f4c14f62",
+        "encoded": "score=percentage",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "232": {
+        "chunkId": "6f8190",
+        "hash": "84d2a533",
+        "encoded": ")",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "233": {
+        "chunkId": "801978",
+        "hash": "f65a3926",
+        "encoded": "except%20Exception%20as%20e:",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "234": {
+        "chunkId": "801978",
+        "hash": "61f9a2bd",
+        "encoded": "logger.error(f%22Pivot%20suggestion%20failed:%20%7Be%7D%22)",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "235": {
+        "chunkId": "801978",
+        "hash": "2c159434",
+        "encoded": "explanation%20=%20None",
+        "prevChunkIds": []
+      },
+      "238": {
+        "chunkId": "6f8190",
+        "hash": "3214de41",
+        "encoded": "st.markdown(%22---%22)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "239": {
+        "chunkId": "6f8190",
+        "hash": "cdc4b377",
+        "encoded": "if%20percentage%20%3E=%2080:",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "240": {
+        "chunkId": "6f8190",
+        "hash": "57709e44",
+        "encoded": "verdict_class%20=%20%22verdict-works%22",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "241": {
+        "chunkId": "6f8190",
+        "hash": "0b6e591b",
+        "encoded": "verdict_text%20=%20%22This%20actually%20suits%20you%20%E2%80%94%20here's%20why%20it%20doesn't%20fail.%22",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "242": {
+        "chunkId": "6f8190",
+        "hash": "822da535",
+        "encoded": "icon%20=%20%22%E2%9C%85%22",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "243": {
+        "chunkId": "6f8190",
+        "hash": "b7a5d9dc",
+        "encoded": "elif%20percentage%20%3E=%2050:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "244": {
+        "chunkId": "6f8190",
+        "hash": "ea3911ba",
+        "encoded": "verdict_class%20=%20%22verdict-risky%22",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "245": {
+        "chunkId": "6f8190",
+        "hash": "53a4b21a",
+        "encoded": "verdict_text%20=%20%22You%20could%20wear%20this,%20but%20it%20won't%20flatter%20you.%22",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "246": {
+        "chunkId": "6f8190",
+        "hash": "bc242a0b",
+        "encoded": "icon%20=%20%22%E2%9A%A0%EF%B8%8F%22",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "247": {
+        "chunkId": "6f8190",
+        "hash": "657616b7",
+        "encoded": "else:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "248": {
+        "chunkId": "6f8190",
+        "hash": "65732e17",
+        "encoded": "verdict_class%20=%20%22verdict-dont-buy%22",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "249": {
+        "chunkId": "6f8190",
+        "hash": "63c44182",
+        "encoded": "verdict_text%20=%20%22This%20almost%20works%20%E2%80%94%20but%20it%20fails%20in%20one%20key%20area.%22",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "250": {
+        "chunkId": "6f8190",
+        "hash": "0fc762d4",
+        "encoded": "icon%20=%20%22%E2%9D%8C%22",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "251": {
+        "chunkId": "6f8190",
+        "hash": "0d8af267",
+        "encoded": "st.markdown(",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "252": {
+        "chunkId": "801978",
+        "hash": "9b849251",
+        "encoded": "f%22%22%22%3Cdiv%20class=%22%7Bverdict_class%7D%22%20role=%22status%22%20aria-live=%22polite%22%3E%3Ch2%3E%7Bicon%7D%20%7Bverdict_text%7D%3C/h2%3E%3Ch1%20style='color:%20inherit;%20margin-top:%2010px;'%3E%7Bpercentage%7D%25%3C/h1%3E%3C/div%3E%22%22%22,",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "253": {
+        "chunkId": "6f8190",
+        "hash": "9970a319",
+        "encoded": "unsafe_allow_html=True",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "254": {
+        "chunkId": "6f8190",
+        "hash": "3d36341f",
+        "encoded": ")",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "256": {
+        "chunkId": "6f8190",
+        "hash": "2a21b731",
+        "encoded": "st.markdown(%22---%22)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "257": {
+        "chunkId": "6f8190",
+        "hash": "b3bf0c76",
+        "encoded": "st.markdown(%22###%20Why?%20(Penalties%20applied)%22)",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "258": {
+        "chunkId": "6f8190",
+        "hash": "332b26d6",
+        "encoded": "if%20rule_result%5B%22reasons%22%5D:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "259": {
+        "chunkId": "6f8190",
+        "hash": "67ba0f8b",
+        "encoded": "for%20reason%20in%20rule_result%5B%22reasons%22%5D:",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "260": {
+        "chunkId": "6f8190",
+        "hash": "b4b91f01",
+        "encoded": "if%20reason%5B%22penalty%22%5D%20%3C%200:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "261": {
+        "chunkId": "6f8190",
+        "hash": "3f45a067",
+        "encoded": "st.success(f%22%E2%9C%93%20%7Breason%5B'text'%5D%7D%22)",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "262": {
+        "chunkId": "6f8190",
+        "hash": "18f7e388",
+        "encoded": "else:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "263": {
+        "chunkId": "6f8190",
+        "hash": "65a2f7da",
+        "encoded": "st.warning(f%22%E2%9C%97%20%7Breason%5B'text'%5D%7D%20(%E2%80%93%7Breason%5B'penalty'%5D%7D%20pts)%22)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "264": {
+        "chunkId": "6f8190",
+        "hash": "513f3655",
+        "encoded": "else:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "265": {
+        "chunkId": "6f8190",
+        "hash": "ee92042d",
+        "encoded": "st.success(%22%E2%9C%93%20No%20conflicts%20%E2%80%94%20this%20works%20well%20with%20your%20profile.%22)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "267": {
+        "chunkId": "6f8190",
+        "hash": "b6a6983d",
+        "encoded": "st.markdown(%22---%22)",
+        "prevChunkIds": []
+      },
+      "268": {
+        "chunkId": "6f8190",
+        "hash": "1034b80d",
+        "encoded": "st.markdown(%22###%20Try%20This%20Instead%22)",
+        "prevChunkIds": []
+      },
+      "270": {
+        "chunkId": "6f8190",
+        "hash": "52b843b5",
+        "encoded": "if%20explanation%20and%20%22pivot_suggestion%22%20in%20explanation:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "271": {
+        "chunkId": "6f8190",
+        "hash": "f902ac21",
+        "encoded": "st.info(f%22%F0%9F%92%A1%20**%7Bexplanation%5B'pivot_suggestion'%5D%7D**%5Cn%5Cn%7Bexplanation%5B'pivot_reason'%5D%7D%22)",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "272": {
+        "chunkId": "6f8190",
+        "hash": "c810a1ec",
+        "encoded": "else:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "273": {
+        "chunkId": "6f8190",
+        "hash": "93fd96b7",
+        "encoded": "from%20rule_engine%20import%20StylingAnalyzer",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "274": {
+        "chunkId": "6f8190",
+        "hash": "769b0a7b",
+        "encoded": "analyzer%20=%20StylingAnalyzer()",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "275": {
+        "chunkId": "6f8190",
+        "hash": "599309d5",
+        "encoded": "pivot%20=%20analyzer.generate_pivot_suggestion(user_profile,%20garment)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "276": {
+        "chunkId": "6f8190",
+        "hash": "1a7f66bb",
+        "encoded": "st.info(f%22%F0%9F%92%A1%20%7Bpivot%7D%22)",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "279": {
+        "chunkId": "6f8190",
+        "hash": "ef925720",
+        "encoded": "st.markdown(%22---%22)",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "280": {
+        "chunkId": "6f8190",
+        "hash": "602d266e",
+        "encoded": "st.markdown(%22###%20Visual%20Comparison%22)",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "281": {
+        "chunkId": "6f8190",
+        "hash": "dd890bb5",
+        "encoded": "col1,%20col2%20=%20st.columns(2)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "282": {
+        "chunkId": "6f8190",
+        "hash": "246da774",
+        "encoded": "with%20col1:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "283": {
+        "chunkId": "801978",
+        "hash": "a8cb7ab8",
+        "encoded": "try:",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "285": {
+        "chunkId": "801978",
+        "hash": "e1381cdd",
+        "encoded": "except%20Exception%20as%20e:",
+        "prevChunkIds": []
+      },
+      "288": {
+        "chunkId": "6f8190",
+        "hash": "196b8ecb",
+        "encoded": "st.caption(f%22**Your%20Style:**%5Cn%7Buser_profile%5B'skin_season'%5D%7D%20%7C%20%7Buser_profile%5B'body_shape'%5D%7D%22)",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "289": {
+        "chunkId": "6f8190",
+        "hash": "42fbb26a",
+        "encoded": "with%20col2:",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "290": {
+        "chunkId": "6f8190",
+        "hash": "e6cdd166",
+        "encoded": "if%20garment_source%20==%20%22Upload%20your%20own%22%20and%20garment_image_path:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "296": {
+        "chunkId": "801978",
+        "hash": "bd6e329f",
+        "encoded": "else:",
+        "prevChunkIds": []
+      },
+      "297": {
+        "chunkId": "6f8190",
+        "hash": "4118c899",
+        "encoded": "st.write(f%22**%7Bgarment%5B'name'%5D%7D**%22)",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "298": {
+        "chunkId": "6f8190",
+        "hash": "f4165f25",
+        "encoded": "st.write(f%22Color:%20%7Bgarment%5B'color_name'%5D%7D%22)",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "299": {
+        "chunkId": "6f8190",
+        "hash": "dd863cde",
+        "encoded": "st.write(f%22Silhouette:%20%7Bgarment%5B'silhouette'%5D.title()%7D%22)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "300": {
+        "chunkId": "6f8190",
+        "hash": "25e28ffb",
+        "encoded": "st.write(f%22For:%20%7B',%20'.join(garment%5B'color_season'%5D)%7D%22)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "301": {
+        "chunkId": "6f8190",
+        "hash": "351b2cb1",
+        "encoded": "st.caption(f%22**Garment:**%5Cn%7Bgarment.get('silhouette',%20'N/A')%7D%20%7C%20%7Bgarment.get('shoulder_emphasis',%20'N/A')%7D%20shoulders%22)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "303": {
+        "chunkId": "6f8190",
+        "hash": "c69016d4",
+        "encoded": "with%20st.expander(%22%F0%9F%93%8A%20How%20I%20judged%20this%22):",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "304": {
+        "chunkId": "6f8190",
+        "hash": "bb81c0c7",
+        "encoded": "st.write(f%22**Base%20Score:**%20100/100%22)",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "305": {
+        "chunkId": "6f8190",
+        "hash": "13fbc59c",
+        "encoded": "st.write(f%22**Final%20Score:**%20%7Brule_result%5B'score'%5D%7D/100%20(%7Bpercentage%7D%25)%22)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "306": {
+        "chunkId": "6f8190",
+        "hash": "d89f4125",
+        "encoded": "if%20rule_result%5B%22reasons%22%5D:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "307": {
+        "chunkId": "6f8190",
+        "hash": "0d791452",
+        "encoded": "st.write(%22**Penalties%20Applied:**%22)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "308": {
+        "chunkId": "6f8190",
+        "hash": "4a04dcae",
+        "encoded": "for%20reason%20in%20rule_result%5B%22reasons%22%5D:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "310": {
+        "chunkId": "6f8190",
+        "hash": "ae02ac66",
+        "encoded": "st.write(f%22%20%20*(%E2%80%93%7Breason%5B'penalty'%5D%7D%20points)*%22)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "312": {
+        "chunkId": "6f8190",
+        "hash": "c0039f9d",
+        "encoded": "import%20traceback",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "314": {
+        "chunkId": "6f8190",
+        "hash": "a91295f6",
+        "encoded": "st.error(f%22%E2%9D%8C%20Error%20analyzing%20your%20photo%20or%20garment.%20Details:%20%7Be%7D%22)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "315": {
+        "chunkId": "6f8190",
+        "hash": "75cd0bc2",
+        "encoded": "st.code(traceback.format_exc())",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "317": {
+        "chunkId": "801978",
+        "hash": "4b71c85c",
+        "encoded": "else:",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "318": {
+        "chunkId": "6f8190",
+        "hash": "209583b2",
+        "encoded": "col1,%20col2%20=%20st.columns(2)",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "319": {
+        "chunkId": "801978",
+        "hash": "49d351df",
+        "encoded": "with%20col1:",
+        "prevChunkIds": []
+      },
+      "320": {
+        "chunkId": "6f8190",
+        "hash": "3ede0ab0",
+        "encoded": "st.markdown(%22%22%22",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "321": {
+        "chunkId": "6f8190",
+        "hash": "0eff4721",
+        "encoded": "###%20How%20it%20works:",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "323": {
+        "chunkId": "6f8190",
+        "hash": "71f189b5",
+        "encoded": "1.%20**Upload**%20your%20photo%20(face%20+%20shoulders%20visible)",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "324": {
+        "chunkId": "6f8190",
+        "hash": "56dcb065",
+        "encoded": "2.%20**Pick**%20a%20garment%20from%20our%20catalog",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "325": {
+        "chunkId": "6f8190",
+        "hash": "b1ecaa06",
+        "encoded": "3.%20**Get%20honest%20feedback**%20about%20whether%20it%20suits%20you",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "327": {
+        "chunkId": "6f8190",
+        "hash": "92fce0c0",
+        "encoded": "We%20analyze:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "328": {
+        "chunkId": "6f8190",
+        "hash": "cdcb8ffe",
+        "encoded": "-%20Your%20skin%20tone%20&%20undertone",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "329": {
+        "chunkId": "6f8190",
+        "hash": "b9272417",
+        "encoded": "-%20Your%20body%20shape",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "330": {
+        "chunkId": "6f8190",
+        "hash": "8dcc46b9",
+        "encoded": "-%20Color%20harmony",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "331": {
+        "chunkId": "6f8190",
+        "hash": "c0cf1c2d",
+        "encoded": "-%20Silhouette%20balance",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "333": {
+        "chunkId": "6f8190",
+        "hash": "103517a3",
+        "encoded": "Then%20we%20tell%20you%20the%20TRUTH%E2%80%94not%20what%20you%20want%20to%20hear.",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "334": {
+        "chunkId": "6f8190",
+        "hash": "d1ff97da",
+        "encoded": "%22%22%22)",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      },
+      "335": {
+        "chunkId": "6f8190",
+        "hash": "b9fa26d7",
+        "encoded": "with%20col2:",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "336": {
+        "chunkId": "6f8190",
+        "hash": "4e6f8171",
+        "encoded": "st.markdown(%22%22%22",
+        "prevChunkIds": [
+          "6f8190"
+        ]
+      },
+      "337": {
+        "chunkId": "6f8190",
+        "hash": "23b73a8e",
+        "encoded": "###%20What%20you%20get:",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "339": {
+        "chunkId": "6f8190",
+        "hash": "42116866",
+        "encoded": "%E2%9C%85%20**Direct%20verdict**:%20Works,%20Risky,%20or%20Don't%20Buy",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "341": {
+        "chunkId": "6f8190",
+        "hash": "ed3ef2b6",
+        "encoded": "%F0%9F%92%AD%20**Honest%20reasons**:%20Why%20it%20works%20or%20doesn't",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "343": {
+        "chunkId": "6f8190",
+        "hash": "ca88f9d8",
+        "encoded": "%F0%9F%8E%AF%20**Pivot%20suggestion**:%20What%20to%20try%20instead",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "345": {
+        "chunkId": "6f8190",
+        "hash": "30130d2d",
+        "encoded": "No%20BS.%20No%20upselling.%20Just%20truth.",
+        "prevChunkIds": [
+          "6f8190",
+          "e33d26"
+        ]
+      },
+      "346": {
+        "chunkId": "6f8190",
+        "hash": "d798747b",
+        "encoded": "%22%22%22)",
+        "prevChunkIds": [
+          "e33d26"
+        ]
+      }
+    }
+  }
+}

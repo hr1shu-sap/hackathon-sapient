@@ -1,0 +1,31 @@
+{
+  "honest_stylist\\requirements.txt": {
+    "filename": "requirements.txt",
+    "path": "honest_stylist\\requirements.txt",
+    "version": "1.1",
+    "chunks": {
+      "2290a3": {
+        "user": "Ayusha Nayak",
+        "model": "claude-sonnet-4@20250514",
+        "timestamp": 1769862679,
+        "platform": "VisualStudioCode",
+        "product": "AIPP",
+        "productVersion": "2.1.2",
+        "source": "chat",
+        "type": "pasteCode",
+        "hash": "75515d0a",
+        "messageId": "system_fccec5b0-fe9f-11f0-8c9d-cba2a7a00901",
+        "codeBlockId": "system_fccec5b0-fe9f-11f0-8c9d-cba2a7a00901-Codeblock-3",
+        "isActive": true
+      }
+    },
+    "lines": {
+      "8": {
+        "chunkId": "2290a3",
+        "hash": "6bef58cd",
+        "encoded": "requests==2.31.0",
+        "prevChunkIds": []
+      }
+    }
+  }
+}

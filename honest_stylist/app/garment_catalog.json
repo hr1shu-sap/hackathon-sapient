@@ -1,0 +1,24 @@
+[
+    {
+        "sku": "G001",
+        "name": "Classic White Shirt",
+        "color_name": "White",
+        "color_season": ["Summer", "Winter"],
+        "silhouette": "Straight"
+    },
+    {
+        "sku": "G002",
+        "name": "Navy Blazer",
+        "color_name": "Navy",
+        "color_season": ["Winter", "Autumn"],
+        "silhouette": "Fitted"
+    },
+    {
+        "sku": "G003",
+        "name": "Pastel Dress",
+        "color_name": "Pastel",
+        "color_season": ["Spring", "Summer"],
+        "silhouette": "A-line"
+    }
+]
+
