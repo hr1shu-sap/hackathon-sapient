@@ -16,7 +16,7 @@ class GeminiExplainer:
 
     def __init__(self, api_key: str, model: str = "gemini-2.5-flash"):
 
-        self.api_key = "AIzaSyDF8LRHh-e4i34x2VNm1Kz0RtjCX-z56Lo"
+        
         if not api_key:
             raise ValueError("GOOGLE_API_KEY is required")
 
