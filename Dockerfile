@@ -9,6 +9,11 @@ RUN apt-get update && apt-get install -y \
     libsm6 \
     libxext6 \
     libxrender-dev \
+    libgl1 \                # REQUIRED for OpenCV
+    libglib2.0-0 \          # REQUIRED for mediapipe
+    libstdc++6 \            # C++ runtime
+    libasound2 \            # sounddevice
+    ffmpeg \                # mediapipe / video
     && rm -rf /var/lib/apt/lists/*
 
 # Python deps
