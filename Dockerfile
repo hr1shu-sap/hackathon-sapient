@@ -18,7 +18,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # App code
 COPY honest_stylist/app /app/app
 COPY honest_stylist/assets /app/assets
-COPY honest_stylist/config /app/config
 
 # Runtime dirs
 RUN mkdir -p /app/rlhf_logs
