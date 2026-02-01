@@ -89,8 +89,8 @@ if run_analysis:
     vision = VisionAnalyzer()
     analyzer = StylingAnalyzer()
     feedback_logger = FeedbackLogger()
-    
-    api_key = os.getenv("GOOGLE_API_KEY")
+
+    api_key = "AIzaSyDF8LRHh-e4i34x2VNm1Kz0RtjCX-z56Lo"
     gemini = GeminiExplainer(api_key) if api_key else None
     recommender = AIRecommender(gemini_client=gemini)
 
