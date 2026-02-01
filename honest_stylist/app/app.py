@@ -332,7 +332,7 @@ elif mode == "Batch Analysis (Multi-photo, Classic Verdicts)":
                             score=rule_result["score"]
                         )
                 with col_img:
-                    st.image(uploaded_file, use_column_width=True)
+                    st.image(uploaded_file, use_container_width=True)
                     st.metric("Compatibility Score", f"{rule_result['score']}/100")
                 with col_info:
                     v_class = "verdict-works" if rule_result["score"] >= 60 else "verdict-risky" if rule_result["score"] >= 40 else "verdict-dont-buy"
