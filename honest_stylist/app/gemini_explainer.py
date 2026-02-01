@@ -1,6 +1,6 @@
 import json
 from typing import Dict, Tuple, Optional
-from google import genai
+import google.generativeai as genai
 
 class GeminiExplainer:
     """
